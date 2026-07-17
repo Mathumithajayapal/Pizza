@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventCater | Wedding & Event Catering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+       :root {
+    --brand-primary: #E53935;
+    --brand-secondary: #FFC107;
+
+    --footer-bg: #1f2937;
+    --dark-bg: #0f172a;
+    --dark-card: #1e293b;
+}
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: white; color: #111827; transition: 0.3s; min-height: 100vh; display: flex; flex-direction: column; }
+        body.dark { background-color: var(--dark-bg); color: #f3f4f6; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; }
+
+        /* --- Header --- */
+        .header-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #f3f4f6; }
+        .dark .header-nav { background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid #1e293b; }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; min-height: 70px; }
+        
+        /* Flex Logic */
+        .nav-section { display: flex; align-items: center; }
+        .desktop-menu { display: none; gap: 20px; font-weight: 500; }
+        @media (min-width: 1024px) { .desktop-menu { display: flex; } }
+        .nav-controls { display: none; align-items: center; gap: 15px; }
+        @media (min-width: 1024px) { .nav-controls { display: flex; } }
+
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--brand-primary); }
+        .logo i{
+    color: #FFC107;
+}
+
+        /* Dropdown CSS */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; background-color: white; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1); z-index: 1; border-radius: 8px; top: 100%; left: 0; overflow: hidden; padding: 5px 0; border: 1px solid #f3f4f6; }
+        .dark .dropdown-content { background-color: var(--dark-card); box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5); border-color: #1e293b; }
+        .dropdown-content a { color: #111827; padding: 10px 16px; text-decoration: none; display: block; font-size: 0.9rem; font-weight: 500; }
+        .dark .dropdown-content a { color: #f3f4f6; }
+        .dropdown-content a:hover { background-color: #f9fafb; color: var(--brand-primary); }
+        .dark .dropdown-content a:hover { background-color: #334155; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown > a { display: flex; align-items: center; gap: 5px; }
+
+        /* --- Mobile Navigation Drawer --- */
+        .mobile-nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1001; display: none; }
+        .mobile-nav-drawer { position: fixed; top: 0; right: -320px; width: 300px; height: 100%; background: white; z-index: 1002; transition: 0.3s; padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+        .dark .mobile-nav-drawer { background: var(--dark-bg); }
+        .mobile-nav-overlay.open { display: block; }
+        .mobile-nav-drawer.open { right: 0; }
+        .mobile-btn { display: block; font-size: 1.5rem; color: var(--brand-primary); background: none; border: none; cursor: pointer; }
+        @media (min-width: 1024px) { .mobile-btn { display: none; } }
+
+        /* --- Footer (Bigger) --- */
+        footer { background: var(--footer-bg); color: #a0aebb; padding: 80px 20px; margin-top: auto; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 40px; }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+        .footer-title { color: white; margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-list { list-style: none; font-size: 0.95rem; display: flex; flex-direction: column; gap: 12px; }
+
+        /* Buttons */
+        .btn-primary { padding: 10px 20px; background: var(--brand-primary);
+    color:#fff; border-radius: 9999px; font-weight: 600; font-size: 0.9rem; }
+    
+        .btn-ghost { width: 35px; height: 35px; border-radius: 50%; background: #f3f4f6; border: none; cursor: pointer; }
+        .dark .btn-ghost { background: #1e293b; color: white; }
+        .hero{
+height:100vh;
+background:url("image/hero-pizza.jpg") center/cover;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:100px 20px;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.65);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:900px;
+color:#fff;
+}
+
+.hero-tag{
+display:inline-block;
+background:#FFC107;
+color:#111;
+padding:10px 25px;
+border-radius:30px;
+font-weight:600;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:4rem;
+line-height:1.1;
+margin-bottom:25px;
+}
+
+.hero h1 span{
+color:#FFC107;
+}
+
+.hero p{
+font-size:1.1rem;
+max-width:700px;
+margin:auto;
+line-height:1.8;
+margin-bottom:35px;
+}
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-bottom:50px;
+}
+
+.hero-outline-btn{
+padding:12px 28px;
+border:2px solid #fff;
+border-radius:40px;
+color:#fff;
+font-weight:600;
+transition:.3s;
+}
+
+.hero-outline-btn:hover{
+background:#fff;
+color:#E53935;
+}
+
+.hero-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+margin-top:20px;
+}
+
+.hero-stats h2{
+font-size:2rem;
+color:#FFC107;
+}
+
+.hero-stats span{
+font-size:.95rem;
+}
+
+@media(max-width:768px){
+
+.hero{
+height:auto;
+padding:170px 20px 90px;
+}
+
+.hero h1{
+font-size:2.5rem;
+}
+
+.hero-stats{
+grid-template-columns:1fr;
+}
+}
+.container{
+max-width:1200px;
+margin:auto;
+padding:90px 20px;
+}
+
+.section-title{
+text-align:center;
+font-size:2.5rem;
+margin-bottom:15px;
+}
+
+.section-subtitle{
+text-align:center;
+color:#666;
+margin-bottom:50px;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:35px;
+}
+
+.category-card{
+    background:#fff;
+    padding:40px 30px;
+    text-align:center;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.35s;
+    min-height:380px;   /* Increased card height */
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.category-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+}
+
+.category-card img{
+    width:180px;
+    height:180px;
+    object-fit:contain;
+    margin-bottom:25px;
+}
+
+.category-card h3{
+    font-size:1.6rem;
+    margin-bottom:12px;
+}
+
+.category-card p{
+    font-size:1rem;
+    color:#777;
+}
+.featured-menu{
+background:#fff8f3;
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.menu-card{
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.menu-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.menu-content{
+padding:25px;
+}
+
+.menu-content h3{
+margin-bottom:10px;
+}
+
+.menu-content p{
+color:#666;
+margin-bottom:20px;
+}
+
+.menu-content span{
+font-size:1.3rem;
+font-weight:bold;
+color:#E53935;
+}
+.why-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.why-card{
+text-align:center;
+padding:40px 30px;
+background:#fff;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.why-card i{
+font-size:55px;
+color:#FFC107;
+margin-bottom:20px;
+}
+
+.why-card h3{
+margin-bottom:15px;
+}
+.reviews{
+background:#fff8f3;
+}
+
+.review-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.review-card{
+background:#fff;
+padding:35px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.review-card h4{
+margin:20px 0;
+color:#FFC107;
+}
+
+.review-card span{
+font-weight:bold;
+}
+.app-section{
+background:#E53935;
+color:#fff;
+}
+
+.app-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+}
+.app-section h2{
+    font-size:2.8rem;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.app-section p{
+    max-width:650px;
+    margin:0 auto 35px;
+    line-height:1.8;
+    text-align:center;
+}
+
+.app-section .hero-buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.app-flex img{
+width:100%;
+max-width:350px;
+display:block;
+margin:auto;
+}
+
+.app-section p{
+margin:20px 0 30px;
+line-height:1.8;
+}
+
+@media(max-width:768px){
+
+.section-title{
+font-size:2rem;
+}
+
+.app-flex{
+text-align:center;
+}
+
+}
+ .footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.footer-social a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #374151;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+.footer-social a:hover {
+    background: var(--brand-primary);
+    transform: translateY(-4px);
+} 
+        
+
+
+    </style>
+</head>
+
+<body>
+
+    <header class="header-nav">
+        <nav class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-pizza-slice"></i> Bitez</a>
+
+            <div class="desktop-menu">
+                <div class="dropdown">
+                    <a href="#">Home <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="index.html">Home 1</a>
+                        <a href="home-2.html">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html">About</a>
+                <a href="menu.html">Menu</a>
+                <a href="services.html">Services</a>
+                <a href="Contact.html">Offers</a>
+                <a href="faq.html">FAQ</a>
+                <a href="Contact.html">Contact</a>
+                                
+
+            </div>
+
+            <div class="nav-controls">
+                <button id="themeToggle" class="btn-ghost"><i class="fas fa-moon"></i></button>
+                <button id="rtlToggle" class="btn-ghost" style="font-weight: bold; font-size: 0.7rem;">RTL</button>
+                <a href="booking.html" class="btn-primary">LOG IN</a>
+            </div>
+
+            <button class="mobile-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </nav>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-overlay" id="navOverlay"></div>
+    <div class="mobile-nav-drawer" id="mobileDrawer">
+        <button id="closeDrawer" style="background:none; border:none; font-size:1.5rem; align-self:flex-end;">✕</button>
+        <a href="index.html" style="font-weight:600;">Home</a>
+        <a href="about.html">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <div style="margin-top: auto; border-top: 1px solid #e5e7eb; padding-top: 20px; display: flex; flex-direction: column; gap: 15px;">
+            <button id="mobileThemeToggle" style="padding: 10px; background: #f3f4f6; color: #111827; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Toggle Theme</button>
+            <button id="mobileRtlToggle" style="padding: 10px; background: #f3f4f6; color: #111827; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Toggle RTL</button>
+            <a href="login.html" class="btn-primary" style="text-align: center;">LOG IN</a>
+        </div>
+    </div>
+    <!-- Hero Banner -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <span class="hero-tag">
+            🍕 Fresh • Hot • Delicious
+        </span>
+
+        <h1>
+            Every Bite <span>Made Fresh</span><br>
+            Every Slice Worth Sharing
+        </h1>
+
+        <p>
+            Discover handcrafted pizzas, juicy burgers, crispy fries, and
+            refreshing drinks made with premium ingredients and unforgettable
+            flavors.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="menu.html" class="btn-primary">Explore Menu</a>
+            <a href="offers.html" class="hero-outline-btn">Today's Offers</a>
+        </div>
+
+        <div class="hero-stats">
+            <div>
+                <h2>50K+</h2>
+                <span>Happy Customers</span>
+            </div>
+
+            <div>
+                <h2>120+</h2>
+                <span>Menu Items</span>
+            </div>
+
+            <div>
+                <h2>24/7</h2>
+                <span>Fast Delivery</span>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="categories">
+    <div class="container">
+        <h2 class="section-title">Popular Categories</h2>
+        <p class="section-subtitle">
+            Explore our most loved food categories made with fresh ingredients.
+        </p>
+
+        <div class="category-grid">
+
+            <div class="category-card">
+                <img src="image/pizza (2).jpg" alt="">
+                <h3>Pizza</h3>
+                <p>25+ Varieties</p>
+            </div>
+
+            <div class="category-card">
+                <img src="image/pizza (2).jpg" alt="">
+                <h3>Burger</h3>
+                <p>15+ Varieties</p>
+            </div>
+
+            <div class="category-card">
+                <img src="image/pizza (2).jpg" alt="">
+                <h3>French Fries</h3>
+                <p>10+ Flavors</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+               <!--3.feature Menu--> 
+                <section class="featured-menu">
+<div class="container">
+
+<h2 class="section-title">Featured Menu</h2>
+
+<div class="menu-grid">
+
+<div class="menu-card">
+<img src="image/pizza.jpg">
+<div class="menu-content">
+<h3>Pepperoni Pizza</h3>
+<p>Loaded with cheese & pepperoni.</p>
+<span>$14.99</span>
+</div>
+</div>
+
+<div class="menu-card">
+<img src="image/pizza.jpg">
+<div class="menu-content">
+<h3>Chicken Burger</h3>
+<p>Crispy chicken with fresh veggies.</p>
+<span>$10.99</span>
+</div>
+</div>
+
+<div class="menu-card">
+<img src="image/pizza.jpg">
+<div class="menu-content">
+<h3>Italian Pasta</h3>
+<p>Fresh creamy white sauce pasta.</p>
+<span>$12.99</span>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+                        <!--4.why choose us-->
+                        <section class="why-us">
+<div class="container">
+
+<h2 class="section-title">Why Choose Bitez?</h2>
+
+<div class="why-grid">
+
+<div class="why-card">
+<i class="fas fa-pizza-slice"></i>
+<h3>Fresh Ingredients</h3>
+<p>Premium quality ingredients every day.</p>
+</div>
+
+<div class="why-card">
+<i class="fas fa-shipping-fast"></i>
+<h3>Fast Delivery</h3>
+<p>Hot & fresh food delivered quickly.</p>
+</div>
+
+<div class="why-card">
+<i class="fas fa-award"></i>
+<h3>Best Quality</h3>
+<p>Trusted by thousands of happy customers.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+                        <!-- 5.why choose us-->
+                        <section class="reviews">
+
+<div class="container">
+
+<h2 class="section-title">Happy Customers</h2>
+
+<div class="review-grid">
+
+<div class="review-card">
+<p>"Best pizza I've ever tasted. Super delicious!"</p>
+<h4>★★★★★</h4>
+<span>- John Smith</span>
+</div>
+
+<div class="review-card">
+<p>"Fast delivery and amazing burgers."</p>
+<h4>★★★★★</h4>
+<span>- Sarah</span>
+</div>
+
+<div class="review-card">
+<p>"Excellent taste with affordable prices."</p>
+<h4>★★★★★</h4>
+<span>- Michael</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+                        <!--6.cta-->
+                        <section class="app-section">
+
+<div class="container app-flex">
+
+<div>
+<h2>Download Our Mobile App</h2>
+
+<p>
+Order your favorite pizza anytime, anywhere and enjoy
+exclusive offers.
+</p>
+
+<div class="hero-buttons">
+<a href="#" class="btn-primary">Google Play</a>
+<a href="#" class="hero-outline-btn">App Store</a>
+</div>
+
+</div>
+
+<div>
+<img src="image/mobile-app.png" alt="">
+</div>
+
+</div>
+
+</section>
+
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+            <a href="index.html" class="logo"><i class="fas fa-pizza-slice"></i> Bitez</a>
+                <p style="font-size: 0.9rem; line-height: 1.6;">From oven-fresh pizzas to delicious fast food favorites, we prepare every meal with quality ingredients, bold flavors, and exceptional care.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">menu</a></li>
+                    <li><a href="#">offers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Support</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Contact</h4>
+                <ul class="footer-list">
+                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                    <li><i class="fas fa-envelope"></i> hello@eventcater.com</li>
+                </ul>
+                <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px; font-size: 0.8rem; border-top: 1px solid #2d3e50; padding-top: 20px;">
+            © 2026 EventCater. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Theme
+        const toggleTheme = () => {
+            document.body.classList.toggle('dark');
+        };
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+        document.getElementById('mobileThemeToggle').addEventListener('click', toggleTheme);
+
+        // Toggle RTL
+        const toggleRTL = () => {
+            document.documentElement.dir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl';
+        };
+        document.getElementById('rtlToggle').addEventListener('click', toggleRTL);
+        document.getElementById('mobileRtlToggle').addEventListener('click', toggleRTL);
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const closeBtn = document.getElementById('closeDrawer');
+        const drawer = document.getElementById('mobileDrawer');
+        const overlay = document.getElementById('navOverlay');
+
+        menuBtn.addEventListener('click', () => {
+            drawer.classList.add('open');
+            overlay.classList.add('open');
+        });
+
+        const closeMenu = () => {
+            drawer.classList.remove('open');
+            overlay.classList.remove('open');
+        };
+
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+    </script>
+</body>
+</html>

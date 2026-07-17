@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitez | Offers & Deals</title>
+     <link rel="icon" type="image/jpeg" href="image/pizza.jpg">  
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --brand-primary: #E53935;
+            --brand-secondary: #FFC107;
+            --footer-bg: #1f2937;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: white;
+            color: #111827;
+            transition: 0.3s;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        body.dark {
+            background-color: var(--dark-bg);
+            color: #f3f4f6;
+        }
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== HEADER / NAVBAR (EXACT FROM REFERENCE) ===== */
+        .header-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .dark .header-nav {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid #1e293b;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 70px;
+        }
+        .nav-section {
+            display: flex;
+            align-items: center;
+        }
+        .desktop-menu {
+            display: none;
+            gap: 20px;
+            font-weight: 500;
+        }
+        @media (min-width: 1024px) {
+            .desktop-menu {
+                display: flex;
+            }
+        }
+        .nav-controls {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        @media (min-width: 1024px) {
+            .nav-controls {
+                display: flex;
+            }
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--brand-primary);
+        }
+        .logo i {
+            color: #FFC107;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 8px;
+            top: 100%;
+            left: 0;
+            overflow: hidden;
+            padding: 5px 0;
+            border: 1px solid #f3f4f6;
+        }
+        .dark .dropdown-content {
+            background-color: var(--dark-card);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+            border-color: #1e293b;
+        }
+        .dropdown-content a {
+            color: #111827;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .dark .dropdown-content a {
+            color: #f3f4f6;
+        }
+        .dropdown-content a:hover {
+            background-color: #f9fafb;
+            color: var(--brand-primary);
+        }
+        .dark .dropdown-content a:hover {
+            background-color: #334155;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown>a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ===== MOBILE NAV DRAWER ===== */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            display: none;
+        }
+        .mobile-nav-drawer {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100%;
+            background: white;
+            z-index: 1002;
+            transition: 0.3s;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .dark .mobile-nav-drawer {
+            background: var(--dark-bg);
+        }
+        .mobile-nav-overlay.open {
+            display: block;
+        }
+        .mobile-nav-drawer.open {
+            right: 0;
+        }
+        .mobile-btn {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--brand-primary);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        @media (min-width: 1024px) {
+            .mobile-btn {
+                display: none;
+            }
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            padding: 10px 20px;
+            background: var(--brand-primary);
+            color: #fff;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+        .btn-ghost {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            border: none;
+            cursor: pointer;
+        }
+        .dark .btn-ghost {
+            background: #1e293b;
+            color: white;
+        }
+        .hero-outline-btn {
+            padding: 12px 28px;
+            border: 2px solid #fff;
+            border-radius: 40px;
+            color: #fff;
+            font-weight: 600;
+            transition: .3s;
+            display: inline-block;
+        }
+        .hero-outline-btn:hover {
+            background: #fff;
+            color: #E53935;
+        }
+        .offer-btn {
+            padding: 10px 24px;
+            background: var(--brand-secondary);
+            color: #111;
+            border-radius: 30px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .offer-btn:hover {
+            background: #e6a800;
+            transform: scale(1.03);
+        }
+        .offer-outline-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--brand-primary);
+            color: var(--brand-primary);
+            border-radius: 30px;
+            font-weight: 600;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .offer-outline-btn:hover {
+            background: var(--brand-primary);
+            color: #fff;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 90px 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+        }
+        .dark .section-subtitle {
+            color: #a0aebb;
+        }
+
+        /* ===== SECTION 1: OFFER HERO ===== */
+       /* ===== HERO SECTION ===== */
+.offer-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 150px 20px 80px;
+    overflow: hidden;
+    color: #fff;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)),
+        url("image/pizza (5).jpg") center center/cover no-repeat;
+
+    background-attachment: fixed;
+}
+
+/* Extra overlay */
+.offer-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(229,57,53,0.25),
+        rgba(0,0,0,0.45)
+    );
+    z-index: 1;
+}
+
+/* Hero Content */
+.offer-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+}
+
+.offer-hero-badge {
+    display: inline-block;
+    background: var(--brand-secondary);
+    color: #111;
+    padding: 8px 28px;
+    border-radius: 30px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.offer-hero h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.offer-hero h1 span {
+    color: var(--brand-secondary);
+}
+
+.offer-hero p {
+    max-width: 700px;
+    margin: 0 auto 35px;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+.offer-hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.offer-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 45px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.offer-hero-stats h2 {
+    font-size: 2.2rem;
+    color: var(--brand-secondary);
+}
+
+.offer-hero-stats span {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width:768px) {
+    .offer-hero {
+        min-height: auto;
+        padding: 140px 20px 70px;
+        background-attachment: scroll; /* Better mobile support */
+    }
+
+    .offer-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .offer-hero p {
+        font-size: 1rem;
+    }
+
+    .offer-hero-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+        /* ===== SECTION 2: WEEKLY SPECIALS ===== */
+        .weekly-specials {
+            background: #fffbf5;
+        }
+        .dark .weekly-specials {
+            background: var(--dark-bg);
+        }
+        .specials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .special-card {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+            transition: 0.35s;
+            position: relative;
+        }
+        .dark .special-card {
+            background: var(--dark-card);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+        .special-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.13);
+        }
+        .special-card .discount-badge {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: var(--brand-primary);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 3;
+            box-shadow: 0 4px 15px rgba(229, 57, 53, 0.35);
+        }
+        .special-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .special-content {
+            padding: 24px;
+        }
+        .special-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+        .special-content .special-desc {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+        .dark .special-content .special-desc {
+            color: #a0aebb;
+        }
+        .special-price-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        .special-price-row .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 1rem;
+        }
+        .special-price-row .new-price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--brand-primary);
+        }
+        .dark .special-price-row .old-price {
+            color: #777;
+        }
+        .special-card .offer-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* ===== SECTION 3: COMBO DEALS ===== */
+        .combo-deals {
+            background: #fff;
+        }
+        .dark .combo-deals {
+            background: var(--dark-bg);
+        }
+        .combo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+        }
+        .combo-card {
+            background: #faf8f6;
+            border-radius: 24px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: 0.35s;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        .dark .combo-card {
+            background: var(--dark-card);
+        }
+        .combo-card:hover {
+            border-color: var(--brand-secondary);
+            transform: translateY(-6px);
+        }
+        .combo-card .combo-icon {
+            font-size: 3.2rem;
+            color: var(--brand-secondary);
+            margin-bottom: 18px;
+        }
+        .combo-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .combo-card .combo-items {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .dark .combo-card .combo-items {
+            color: #a0aebb;
+        }
+        .combo-card .combo-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--brand-primary);
+            margin-bottom: 18px;
+        }
+        .combo-card .combo-save {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-bottom: 18px;
+        }
+        .dark .combo-card .combo-save {
+            background: #1e3a2a;
+            color: #81c784;
+        }
+        .combo-card .offer-btn {
+            width: 100%;
+        }
+
+        /* ===== SECTION 4: LIMITED TIME ===== */
+        .limited-time {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 90px 20px;
+        }
+        .limited-time .section-title {
+            color: #fff;
+        }
+        .limited-time .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .limited-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .limited-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 35px 28px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.35s;
+        }
+        .limited-card:hover {
+            background: rgba(255, 255, 255, 0.10);
+            transform: translateY(-6px);
+        }
+        .limited-card .limited-icon {
+            font-size: 2.8rem;
+            color: var(--brand-secondary);
+            margin-bottom: 16px;
+        }
+        .limited-card h3 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        .limited-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+        .limited-card .timer {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .limited-card .timer .time-block {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 10px 14px;
+            min-width: 60px;
+        }
+        .limited-card .timer .time-block .num {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--brand-secondary);
+            display: block;
+        }
+        .limited-card .timer .time-block .label {
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .limited-card .offer-btn {
+            background: var(--brand-secondary);
+            color: #111;
+        }
+        .limited-card .offer-btn:hover {
+            background: #fff;
+        }
+
+        /* ===== SECTION 5: OFFER CATEGORIES ===== */
+        .offer-categories {
+            background: #fff8f3;
+        }
+        .dark .offer-categories {
+            background: var(--dark-bg);
+        }
+        .offer-cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .offer-cat-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: 0.35s;
+            position: relative;
+            overflow: hidden;
+        }
+        .dark .offer-cat-card {
+            background: var(--dark-card);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        .offer-cat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 193, 7, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .offer-cat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.10);
+        }
+        .offer-cat-card .cat-icon {
+            font-size: 2.8rem;
+            color: var(--brand-primary);
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        .offer-cat-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .offer-cat-card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        .dark .offer-cat-card p {
+            color: #a0aebb;
+        }
+        .offer-cat-card .offer-tag {
+            display: inline-block;
+            background: var(--brand-secondary);
+            color: #111;
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== FOOTER (EXACT FROM REFERENCE) ===== */
+        footer {
+            background: var(--footer-bg);
+            color: #a0aebb;
+            padding: 80px 20px;
+            margin-top: auto;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .footer-title {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        .footer-list {
+            list-style: none;
+            font-size: 0.95rem;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .footer-list li a {
+            transition: 0.3s;
+        }
+        .footer-list li a:hover {
+            color: #fff;
+        }
+        .footer-grid .logo {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .footer-grid .logo i {
+            color: #FFC107;
+        }
+        .footer-grid>div:first-child p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+         .footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.footer-social a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #374151;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+.footer-social a:hover {
+    background: var(--brand-primary);
+    transform: translateY(-4px);
+} 
+  /* ===== ACTIVE NAV LINK ===== */
+.desktop-menu a {
+    position: relative;
+    color: inherit;
+    transition: 0.3s;
+}
+
+.desktop-menu a:hover {
+    color: var(--brand-primary);
+}
+
+.desktop-menu a.active {
+    color: var(--brand-primary);
+    font-weight: 700;
+}
+
+.desktop-menu a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 3px;
+    background: var(--brand-primary);
+    border-radius: 10px;
+}
+.mobile-nav-drawer a.active {
+    color: var(--brand-primary);
+    font-weight: 700;
+    background: rgba(229, 57, 53, 0.1);
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+        
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================================================= -->
+    <!-- HEADER / NAVBAR – EXACT FROM REFERENCE                     -->
+    <!-- ========================================================= -->
+    <header class="header-nav">
+        <nav class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-pizza-slice"></i> Bitez</a>
+
+            <div class="desktop-menu">
+                <div class="dropdown">
+                    <a href="#">Home <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="index.html">Home 1</a>
+                        <a href="home2.html">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html">About</a>
+                <a href="menu.html">Menu</a>
+                <a href="services.html">Services</a>
+                <a href="offers.html" class="active">Offers</a>
+                <a href="faq.html">FAQ</a>
+                <a href="Contact.html">Contact</a>
+            </div>
+
+            <div class="nav-controls">
+                <button id="themeToggle" class="btn-ghost"><i class="fas fa-moon"></i></button>
+                <button id="rtlToggle" class="btn-ghost" style="font-weight: bold; font-size: 0.7rem;">RTL</button>
+                <a href="signin.html" class="btn-primary">LOG IN</a>
+            </div>
+
+            <button class="mobile-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </nav>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-overlay" id="navOverlay"></div>
+    <div class="mobile-nav-drawer" id="mobileDrawer">
+        <button id="closeDrawer" style="background:none; border:none; font-size:1.5rem; align-self:flex-end;">✕</button>
+        <a href="index.html" style="font-weight:600;">Home</a>
+        <a href="index.html" style="font-weight:600;">Home1</a>
+        <a href="home2.html" style="font-weight:600;">Home2</a>
+        <a href="about.html">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="services.html">Services</a>
+        <a href="offers.html" style="color:var(--brand-primary);" class="active">Offers</a>
+        <a href="faq.html">FAQ</a>
+        <a href="Contact.html">Contact</a>
+        <div style="margin-top: auto; border-top: 1px solid #e5e7eb; padding-top: 20px; display: flex; flex-direction: column; gap: 15px;">
+            <button id="mobileThemeToggle" style="padding: 10px; background: #f3f4f6; color: #111827; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Toggle Theme</button>
+            <button id="mobileRtlToggle" style="padding: 10px; background: #f3f4f6; color: #111827; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Toggle RTL</button>
+            <a href="signin.html" class="btn-primary" style="text-align: center;">LOG IN</a>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 1: OFFER HERO BANNER  (~75 lines)                  -->
+    <!-- ========================================================= -->
+    <section class="offer-hero">
+        <div class="offer-hero-content">
+            <span class="offer-hero-badge">🔥 LIMITED TIME OFFERS</span>
+            <h1>Big Savings <span>Every Bite</span></h1>
+            <p>
+                Unlock exclusive deals on your favorite pizzas, burgers, combos and more.
+                Fresh flavors at unbeatable prices — only at Bitez.
+            </p>
+            <div class="offer-hero-buttons">
+                <a href="#specials" class="btn-primary">View Weekly Specials</a>
+                <a href="#combos" class="hero-outline-btn">Explore Combos</a>
+            </div>
+            <div class="offer-hero-stats">
+                <div>
+                    <h2>15+</h2>
+                    <span>Active Offers</span>
+                </div>
+                <div>
+                    <h2>40%</h2>
+                    <span>Max Discount</span>
+                </div>
+                <div>
+                    <h2>500+</h2>
+                    <span>Redeemed Today</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 2: WEEKLY SPECIALS  (~75 lines)                    -->
+    <!-- ========================================================= -->
+    <section class="weekly-specials" id="specials">
+        <div class="container">
+            <h2 class="section-title">Weekly Specials</h2>
+            <p class="section-subtitle">Handpicked deals that change every week. Grab yours before they're gone!</p>
+            <div class="specials-grid">
+
+                <div class="special-card">
+                    <span class="discount-badge">-25%</span>
+                    <img src="image/orders (3).jpg" alt="Margherita Pizza">
+                    <div class="special-content">
+                        <h3>Margherita Pizza</h3>
+                        <p class="special-desc">Classic tomato, mozzarella & fresh basil on a crispy crust.</p>
+                        <div class="special-price-row">
+                            <span class="old-price">$16.99</span>
+                            <span class="new-price">$12.74</span>
+                        </div>
+                        <button class="offer-btn">Claim Offer</button>
+                    </div>
+                </div>
+
+                <div class="special-card">
+                    <span class="discount-badge">-20%</span>
+                    <img src="image/orders (2).jpg" alt="BBQ Chicken Pizza">
+                    <div class="special-content">
+                        <h3>BBQ Chicken Pizza</h3>
+                        <p class="special-desc">Grilled chicken, red onions, cilantro & smoky BBQ sauce.</p>
+                        <div class="special-price-row">
+                            <span class="old-price">$18.99</span>
+                            <span class="new-price">$15.19</span>
+                        </div>
+                        <button class="offer-btn">Claim Offer</button>
+                    </div>
+                </div>
+
+                <div class="special-card">
+                    <span class="discount-badge">-30%</span>
+                    <img src="image/orders (1).jpg" alt="Veggie Supreme">
+                    <div class="special-content">
+                        <h3>Veggie Supreme</h3>
+                        <p class="special-desc">Bell peppers, olives, mushrooms & onions with extra cheese.</p>
+                        <div class="special-price-row">
+                            <span class="old-price">$15.99</span>
+                            <span class="new-price">$11.19</span>
+                        </div>
+                        <button class="offer-btn">Claim Offer</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 3: COMBO DEALS  (~75 lines)                        -->
+    <!-- ========================================================= -->
+    <section class="combo-deals" id="combos">
+        <div class="container">
+            <h2 class="section-title">Combo Meal Deals</h2>
+            <p class="section-subtitle">Get more value with our curated combos — perfect for sharing or feasting solo.</p>
+            <div class="combo-grid">
+
+                <div class="combo-card">
+                    <div class="combo-icon"><i class="fas fa-pizza-slice"></i></div>
+                    <h3>Family Feast</h3>
+                    <p class="combo-items">2 Large Pizzas  + 1.5L Drink</p>
+                    <span class="combo-save">Save $12</span>
+                    <div class="combo-price">$39.99</div>
+                    <button class="offer-btn">Order Combo</button>
+                </div>
+
+                <div class="combo-card">
+                    <div class="combo-icon"><i class="fas fa-hamburger"></i></div>
+                    <h3>Burger Buddy</h3>
+                    <p class="combo-items">2 Classic Burgers + 2 Fries + 2 Drinks</p>
+                    <span class="combo-save">Save $8</span>
+                    <div class="combo-price">$24.99</div>
+                    <button class="offer-btn">Order Combo</button>
+                </div>
+
+                <div class="combo-card">
+                    <div class="combo-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Pasta Pair</h3>
+                    <p class="combo-items">2 Pasta Dishes + 2 Drinks</p>
+                    <span class="combo-save">Save $10</span>
+                    <div class="combo-price">$29.99</div>
+                    <button class="offer-btn">Order Combo</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 4: LIMITED TIME OFFERS  (~75 lines)                -->
+    <!-- ========================================================= -->
+    <section class="limited-time" id="limited">
+        <h2 class="section-title">⏳ Limited Time Offers</h2>
+        <p class="section-subtitle">Hurry — these deals expire soon. Order now and save big!</p>
+        <div class="limited-grid">
+
+            <div class="limited-card">
+                <div class="limited-icon"><i class="fas fa-fire"></i></div>
+                <h3>Midnight Munchies</h3>
+                <p>50% off on all orders placed after 10 PM. Perfect for late-night cravings!</p>
+                <div class="timer">
+                    <div class="time-block"><span class="num">04</span><span class="label">Hrs</span></div>
+                    <div class="time-block"><span class="num">28</span><span class="label">Min</span></div>
+                    <div class="time-block"><span class="num">45</span><span class="label">Sec</span></div>
+                </div>
+                <button class="offer-btn">Grab Deal</button>
+            </div>
+
+            <div class="limited-card">
+                <div class="limited-icon"><i class="fas fa-gift"></i></div>
+                <h3>First Order Treat</h3>
+                <p>New customers get 30% off + a free dessert on their very first order.</p>
+                <div class="timer">
+                    <div class="time-block"><span class="num">02</span><span class="label">Days</span></div>
+                    <div class="time-block"><span class="num">14</span><span class="label">Hrs</span></div>
+                    <div class="time-block"><span class="num">32</span><span class="label">Min</span></div>
+                </div>
+                <button class="offer-btn">Claim Now</button>
+            </div>
+
+            <div class="limited-card">
+                <div class="limited-icon"><i class="fas fa-users"></i></div>
+                <h3>Group Feast Deal</h3>
+                <p>Order 3+ items and get 20% off your entire cart. Great for parties!</p>
+                <div class="timer">
+                    <div class="time-block"><span class="num">05</span><span class="label">Days</span></div>
+                    <div class="time-block"><span class="num">08</span><span class="label">Hrs</span></div>
+                    <div class="time-block"><span class="num">10</span><span class="label">Min</span></div>
+                </div>
+                <button class="offer-btn">Get Offer</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 5: OFFER CATEGORIES  (~75 lines)                   -->
+    <!-- ========================================================= -->
+    <section class="offer-categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">Explore Offers By Category</h2>
+            <p class="section-subtitle">Find the best deals tailored to your cravings — from pizzas to desserts.</p>
+            <div class="offer-cat-grid">
+
+                <div class="offer-cat-card">
+                    <div class="cat-icon"><i class="fas fa-pizza-slice"></i></div>
+                    <h3>Pizza Deals</h3>
+                    <p>Up to 40% off on select pizzas. Extra cheese & toppings at no extra cost.</p>
+                    <span class="offer-tag">12 Offers</span>
+                </div>
+
+                <div class="offer-cat-card">
+                    <div class="cat-icon"><i class="fas fa-hamburger"></i></div>
+                    <h3>Burger Offers</h3>
+                    <p>Buy 1 Get 1 Free on all premium burgers. Double the taste, half the price.</p>
+                    <span class="offer-tag">8 Offers</span>
+                </div>
+
+                <div class="offer-cat-card">
+                    <div class="cat-icon"> <i class="fas fa-bowl-food"></i></div>
+                    <h3>Sides & Fries</h3>
+                    <p>Combo your meal with crispy fries & onion rings at a discounted rate.</p>
+                    <span class="offer-tag">6 Offers</span>
+                </div>
+
+                <div class="offer-cat-card">
+                    <div class="cat-icon"><i class="fas fa-cocktail"></i></div>
+                    <h3>Beverage Deals</h3>
+                    <p>Free drink upgrade on every meal order. Refreshing savings await.</p>
+                    <span class="offer-tag">5 Offers</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- FOOTER – EXACT FROM REFERENCE                             -->
+    <!-- ========================================================= -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" class="logo"><i class="fas fa-pizza-slice"></i> Bitez</a>
+                <p style="font-size: 0.9rem; line-height: 1.6;">From oven-fresh pizzas to delicious fast food favorites, we prepare every meal with quality ingredients, bold flavors, and exceptional care.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">menu</a></li>
+                    <li><a href="#">offers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Support</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Contact</h4>
+                <ul class="footer-list">
+                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                    <li><i class="fas fa-envelope"></i> hello@eventcater.com</li>
+                </ul>
+                <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px; font-size: 0.8rem; border-top: 1px solid #2d3e50; padding-top: 20px;">
+            © 2026 EventCater. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- ========================================================= -->
+    <!-- SCRIPTS                                                   -->
+    <!-- ========================================================= -->
+    <script>
+        // Toggle Theme
+        const toggleTheme = () => {
+            document.body.classList.toggle('dark');
+        };
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+        document.getElementById('mobileThemeToggle').addEventListener('click', toggleTheme);
+
+        // Toggle RTL
+        const toggleRTL = () => {
+            document.documentElement.dir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl';
+        };
+        document.getElementById('rtlToggle').addEventListener('click', toggleRTL);
+        document.getElementById('mobileRtlToggle').addEventListener('click', toggleRTL);
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const closeBtn = document.getElementById('closeDrawer');
+        const drawer = document.getElementById('mobileDrawer');
+        const overlay = document.getElementById('navOverlay');
+
+        menuBtn.addEventListener('click', () => {
+            drawer.classList.add('open');
+            overlay.classList.add('open');
+        });
+
+        const closeMenu = () => {
+            drawer.classList.remove('open');
+            overlay.classList.remove('open');
+        };
+
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Simple timer animation (demo)
+        document.querySelectorAll('.timer').forEach(timer => {
+            const nums = timer.querySelectorAll('.num');
+            if (nums.length) {
+                setInterval(() => {
+                    nums.forEach(el => {
+                        let val = parseInt(el.textContent);
+                        if (val > 0) {
+                            val--;
+                            el.textContent = String(val).padStart(2, '0');
+                        } else {
+                            el.textContent = '00';
+                        }
+                    });
+                }, 60000);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitez | About Us – Pizza & Fast Food Delivery</title>
+         <link rel="icon" type="image/jpeg" href="image/pizza.jpg">  
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --brand-primary: #E53935;
+            --brand-secondary: #FFC107;
+            --footer-bg: #1f2937;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: white;
+            color: #111827;
+            transition: 0.3s;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        body.dark {
+            background-color: var(--dark-bg);
+            color: #f3f4f6;
+        }
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== HEADER / NAVBAR (EXACT FROM REFERENCE) ===== */
+        .header-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .dark .header-nav {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid #1e293b;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 70px;
+        }
+        .nav-section {
+            display: flex;
+            align-items: center;
+        }
+        .desktop-menu {
+            display: none;
+            gap: 20px;
+            font-weight: 500;
+        }
+        @media (min-width: 1024px) {
+            .desktop-menu {
+                display: flex;
+            }
+        }
+        .nav-controls {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        @media (min-width: 1024px) {
+            .nav-controls {
+                display: flex;
+            }
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--brand-primary);
+        }
+        .logo i {
+            color: #FFC107;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 8px;
+            top: 100%;
+            left: 0;
+            overflow: hidden;
+            padding: 5px 0;
+            border: 1px solid #f3f4f6;
+        }
+        .dark .dropdown-content {
+            background-color: var(--dark-card);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+            border-color: #1e293b;
+        }
+        .dropdown-content a {
+            color: #111827;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .dark .dropdown-content a {
+            color: #f3f4f6;
+        }
+        .dropdown-content a:hover {
+            background-color: #f9fafb;
+            color: var(--brand-primary);
+        }
+        .dark .dropdown-content a:hover {
+            background-color: #334155;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown>a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ===== MOBILE NAV DRAWER ===== */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            display: none;
+        }
+        .mobile-nav-drawer {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100%;
+            background: white;
+            z-index: 1002;
+            transition: 0.3s;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .dark .mobile-nav-drawer {
+            background: var(--dark-bg);
+        }
+        .mobile-nav-overlay.open {
+            display: block;
+        }
+        .mobile-nav-drawer.open {
+            right: 0;
+        }
+        .mobile-btn {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--brand-primary);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        @media (min-width: 1024px) {
+            .mobile-btn {
+                display: none;
+            }
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            padding: 10px 20px;
+            background: var(--brand-primary);
+            color: #fff;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+        .btn-ghost {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            border: none;
+            cursor: pointer;
+        }
+        .dark .btn-ghost {
+            background: #1e293b;
+            color: white;
+        }
+        .hero-outline-btn {
+            padding: 12px 28px;
+            border: 2px solid #fff;
+            border-radius: 40px;
+            color: #fff;
+            font-weight: 600;
+            transition: .3s;
+            display: inline-block;
+        }
+        .hero-outline-btn:hover {
+            background: #fff;
+            color: #E53935;
+        }
+
+        /* ===== SECTION 1: ABOUT HERO (70-80 lines) ===== */
+        .about-hero {
+            height: 100vh;
+            background: url("image/pizza (3).jpg") center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+            margin-top: 0;
+        }
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .7);
+        }
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            color: #fff;
+        }
+        .about-hero-content .about-tag {
+            display: inline-block;
+            background: var(--brand-secondary);
+            color: #111;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+        .about-hero-content h1 {
+            font-size: 4.2rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .about-hero-content h1 span {
+            color: var(--brand-secondary);
+        }
+        .about-hero-content p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 35px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        .about-hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        @media(max-width:768px) {
+            .about-hero {
+                height: auto;
+                padding: 170px 20px 90px;
+            }
+            .about-hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* ===== SECTION 2: OUR STORY (70-80 lines) ===== */
+        .story-section {
+            padding: 90px 20px;
+            background: #fff;
+        }
+        .dark .story-section {
+            background: var(--dark-bg);
+        }
+        .story-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .story-image {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .12);
+        }
+        .story-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        .story-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        .story-text h2 span {
+            color: var(--brand-primary);
+        }
+        .story-text .story-sub {
+            color: var(--brand-primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .story-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
+        .dark .story-text p {
+            color: #cbd5e1;
+        }
+        .story-text .story-highlight {
+            font-weight: 600;
+            color: var(--brand-primary);
+            font-size: 1.1rem;
+        }
+        .story-stats-mini {
+            display: flex;
+            gap: 40px;
+            margin-top: 25px;
+        }
+        .story-stats-mini div {
+            text-align: center;
+        }
+        .story-stats-mini h3 {
+            font-size: 2rem;
+            color: var(--brand-primary);
+            font-family: 'Inter', sans-serif;
+        }
+        .story-stats-mini span {
+            font-size: 0.85rem;
+            color: #777;
+        }
+        .dark .story-stats-mini span {
+            color: #a0aebb;
+        }
+        @media(max-width:900px) {
+            .story-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .story-image img {
+                height: 280px;
+            }
+            .story-text h2 {
+                font-size: 2.2rem;
+            }
+            .story-stats-mini {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+        }
+
+        /* ===== SECTION 3: MISSION & VISION (70-80 lines) ===== */
+        .mission-section {
+            padding: 90px 20px;
+            background: #fff8f3;
+        }
+        .dark .mission-section {
+            background: var(--dark-bg);
+        }
+        .mission-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .mission-container .section-title {
+            text-align: center;
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+        }
+        .mission-container .section-sub {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.05rem;
+        }
+        .dark .mission-container .section-sub {
+            color: #a0aebb;
+        }
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+        }
+        .mission-card {
+            background: #fff;
+            padding: 45px 35px;
+            border-radius: 24px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, .07);
+            text-align: center;
+            transition: .35s;
+            border-bottom: 5px solid transparent;
+        }
+        .dark .mission-card {
+            background: var(--dark-card);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, .3);
+        }
+        .mission-card:hover {
+            transform: translateY(-8px);
+            border-bottom-color: var(--brand-primary);
+        }
+        .mission-card .mission-icon {
+            font-size: 4rem;
+            color: var(--brand-secondary);
+            margin-bottom: 20px;
+        }
+        .mission-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+        .mission-card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        .dark .mission-card p {
+            color: #cbd5e1;
+        }
+        .mission-card ul {
+            list-style: none;
+            margin-top: 18px;
+            text-align: left;
+            padding: 0;
+        }
+        .mission-card ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f1f1;
+            color: #444;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .dark .mission-card ul li {
+            border-bottom-color: #2d3e50;
+            color: #cbd5e1;
+        }
+        .mission-card ul li i {
+            color: var(--brand-primary);
+            width: 20px;
+        }
+        @media(max-width:768px) {
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+            .mission-card {
+                padding: 30px 20px;
+            }
+        }
+
+        /* ===== SECTION 4: OUR TEAM (70-80 lines) ===== */
+        .team-section {
+            padding: 90px 20px;
+            background: #fff;
+        }
+        .dark .team-section {
+            background: var(--dark-bg);
+        }
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .team-container .section-title {
+            text-align: center;
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+        }
+        .team-container .section-sub {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.05rem;
+        }
+        .dark .team-container .section-sub {
+            color: #a0aebb;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 35px;
+        }
+        .team-card {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, .07);
+            transition: .35s;
+            text-align: center;
+        }
+        .dark .team-card {
+            background: var(--dark-card);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, .3);
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, .13);
+        }
+        .team-card .team-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+        .team-card .team-info {
+            padding: 25px 20px 30px;
+        }
+        .team-card .team-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+        .team-card .team-info .team-role {
+            color: var(--brand-primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .team-card .team-info p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .dark .team-card .team-info p {
+            color: #a0aebb;
+        }
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .team-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            transition: .3s;
+            font-size: 0.9rem;
+        }
+        .dark .team-social a {
+            background: #2d3e50;
+            color: #cbd5e1;
+        }
+        .team-social a:hover {
+            background: var(--brand-primary);
+            color: #fff;
+        }
+        @media(max-width:768px) {
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media(max-width:500px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== SECTION 5: MILESTONES / TIMELINE (70-80 lines) ===== */
+        .milestone-section {
+            padding: 90px 20px;
+            background: #fff8f3;
+        }
+        .dark .milestone-section {
+            background: var(--dark-bg);
+        }
+        .milestone-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .milestone-container .section-title {
+            text-align: center;
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+        }
+        .milestone-container .section-sub {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.05rem;
+        }
+        .dark .milestone-container .section-sub {
+            color: #a0aebb;
+        }
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+            padding-left: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--brand-secondary);
+            border-radius: 4px;
+        }
+        .timeline-item {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            position: relative;
+        }
+        .timeline-item .timeline-dot {
+            position: absolute;
+            left: -33px;
+            top: 6px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--brand-primary);
+            border: 4px solid var(--brand-secondary);
+            box-shadow: 0 0 0 4px #fff;
+        }
+        .dark .timeline-item .timeline-dot {
+            box-shadow: 0 0 0 4px var(--dark-bg);
+        }
+        .timeline-item .timeline-year {
+            min-width: 90px;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--brand-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.2;
+        }
+        .timeline-item .timeline-content {
+            background: #fff;
+            padding: 22px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .06);
+            flex: 1;
+        }
+        .dark .timeline-item .timeline-content {
+            background: var(--dark-card);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .3);
+        }
+        .timeline-item .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+            font-family: 'Inter', sans-serif;
+        }
+        .timeline-item .timeline-content p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+        .dark .timeline-item .timeline-content p {
+            color: #cbd5e1;
+        }
+        .timeline-item .timeline-content .timeline-icon {
+            color: var(--brand-secondary);
+            margin-right: 10px;
+        }
+        @media(max-width:768px) {
+            .timeline {
+                padding-left: 25px;
+            }
+            .timeline::before {
+                left: 8px;
+            }
+            .timeline-item .timeline-dot {
+                left: -26px;
+                width: 16px;
+                height: 16px;
+            }
+            .timeline-item .timeline-year {
+                min-width: 60px;
+                font-size: 1.3rem;
+            }
+            .timeline-item {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .timeline-item .timeline-content {
+                padding: 18px 20px;
+                width: 100%;
+            }
+        }
+
+        /* ===== FOOTER (EXACT FROM REFERENCE) ===== */
+        footer {
+            background: var(--footer-bg);
+            color: #a0aebb;
+            padding: 80px 20px;
+            margin-top: auto;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .footer-title {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        .footer-list {
+            list-style: none;
+            font-size: 0.95rem;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .footer-list li a {
+            transition: 0.3s;
+        }
+        .footer-list li a:hover {
+            color: #fff;
+        }
+        .footer-grid .logo {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .footer-grid .logo i {
+            color: #FFC107;
+        }
+        .footer-grid>div:first-child p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+       .footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.footer-social a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #374151;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+.footer-social a:hover {
+    background: var(--brand-primary);
+    transform: translateY(-4px);
+} 
+  /* ===== ACTIVE NAV LINK ===== */
+.desktop-menu a {
+    position: relative;
+    color: inherit;
+    transition: 0.3s;
+}
+
+.desktop-menu a:hover {
+    color: var(--brand-primary);
+}
+
+.desktop-menu a.active {
+    color: var(--brand-primary);
+    font-weight: 700;
+}
+
+.desktop-menu a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 3px;
+    background: var(--brand-primary);
+    border-radius: 10px;
+}
+.mobile-nav-drawer a.active {
+    color: var(--brand-primary);
+    font-weight: 700;
+    background: rgba(229, 57, 53, 0.1);
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+        
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================================================= -->
+    <!-- HEADER / NAVBAR – EXACT FROM REFERENCE                     -->
+    <!-- ========================================================= -->
+    <header class="header-nav">
+        <nav class="nav-container">
+            <a href="index.html" class="logo"><i class="fas fa-pizza-slice"></i> Bitez</a>
+
+            <div class="desktop-menu">
+                <div class="dropdown">
+                    <a href="#">Home <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="index.html">Home 1</a>
+                        <a href="home2.html">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="active">About</a>
+                <a href="menu.html">Menu</a>
+                <a href="services.html">Services</a>
+                <a href="offers.html">Offers</a>
+                <a href="faq.html">FAQ</a>
+                <a href="Contact.html">Contact</a>
+            </div>
+
+            <div class="nav-controls">
+                <button id="themeToggle" class="btn-ghost"><i class="fas fa-moon"></i></button>
+                <button id="rtlToggle" class="btn-ghost" style="font-weight: bold; font-size: 0.7rem;">RTL</button>
+                <a href="signin.html" class="btn-primary">LOG IN</a>
+            </div>
+
+            <button class="mobile-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </nav>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-nav-overlay" id="navOverlay"></div>
+    <div class="mobile-nav-drawer" id="mobileDrawer">
+        <button id="closeDrawer" style="background:none; border:none; font-size:1.5rem; align-self:flex-end;">✕</button>
+        <a href="index.html" style="font-weight:600;">Home</a>
+        <a href="index.html" style="font-weight:600;">Home1</a>
+        <a href="home2.html" style="font-weight:600;">Home2</a>
+        <a href="about.html" class="active">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="services.html">Services</a>
+        <a href="offers.html">Offers</a>
+
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <div style="margin-top: auto; border-top: 1px solid #e5e7eb; padding-top: 20px; display: flex; flex-direction: column; gap: 15px;">
+            <button id="mobileThemeToggle" style="padding: 10px; background: #f3f4f6; color: #111827; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Toggle Theme</button>
+            <button id="mobileRtlToggle" style="padding: 10px; background: #f3f4f6; color: #111827; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Toggle RTL</button>
+            <a href="login.html" class="btn-primary" style="text-align: center;">LOG IN</a>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 1: ABOUT HERO (70-80 lines)                       -->
+    <!-- ========================================================= -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <span class="about-tag"><i class="fas fa-utensils"></i> About Bitez</span>
+            <h1>Passion for <span>Great Food</span><br>Since Day One</h1>
+            <p>
+                We believe every meal tells a story. From our humble beginnings to becoming
+                a trusted name in fast food delivery, we've always put quality, flavor, and
+                our customers first.
+            </p>
+            <div class="about-hero-buttons">
+                <a href="#story" class="btn-primary">Our Story</a>
+                <a href="#team" class="hero-outline-btn">Meet the Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 2: OUR STORY (70-80 lines)                        -->
+    <!-- ========================================================= -->
+    <section class="story-section" id="story">
+        <div class="story-container">
+            <div class="story-image">
+                <img src="image/pizza (7).jpg" alt="Our Story – Bitez Kitchen">
+            </div>
+            <div class="story-text">
+                <span class="story-sub"><i class="fas fa-book-open"></i> Our Journey</span>
+                <h2>From a Small Kitchen to <span>Your Favorite</span> Delivery</h2>
+                <p>
+                    Bitez started in 2018 with a simple idea: bring restaurant-quality pizza
+                    and fast food to every doorstep with freshness and flavor that excites.
+                    What began as a single kitchen has grown into a beloved brand serving
+                    thousands of happy customers every day.
+                </p>
+                <p>
+                    We source only the finest ingredients — from hand-tossed dough to farm-fresh
+                    vegetables and premium meats. Every recipe is crafted with care, and every
+                    order is prepared with the same passion that started it all.
+                </p>
+                <p class="story-highlight">
+                    <i class="fas fa-quote-left" style="opacity:0.4; margin-right:6px;"></i>
+                    Good food is the foundation of genuine happiness.
+                </p>
+                <div class="story-stats-mini">
+                    <div>
+                        <h3>7+</h3>
+                        <span>Years of Excellence</span>
+                    </div>
+                    <div>
+                        <h3>50K+</h3>
+                        <span>Happy Customers</span>
+                    </div>
+                    <div>
+                        <h3>120+</h3>
+                        <span>Menu Items</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 3: MISSION & VISION (70-80 lines)                 -->
+    <!-- ========================================================= -->
+    <section class="mission-section" id="mission">
+        <div class="mission-container">
+            <h2 class="section-title">Our <span style="color:var(--brand-primary);">Mission</span> &amp; Vision</h2>
+            <p class="section-sub">Guided by purpose, driven by flavor — every day we aim higher.</p>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Our Mission</h3>
+                    <p>
+                        To deliver delicious, high-quality food that brings people together,
+                        crafted with integrity, and served with a smile — every single time.
+                    </p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Fresh ingredients daily</li>
+                        <li><i class="fas fa-check-circle"></i> Consistent taste &amp; quality</li>
+                        <li><i class="fas fa-check-circle"></i> Fast &amp; reliable delivery</li>
+                    </ul>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Our Vision</h3>
+                    <p>
+                        To become the most loved food delivery brand, known for excellence,
+                        innovation, and creating memorable dining experiences for every customer.
+                    </p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Expand to 50+ locations</li>
+                        <li><i class="fas fa-check-circle"></i> Sustainable &amp; eco-friendly</li>
+                        <li><i class="fas fa-check-circle"></i> Community first, always</li>
+                    </ul>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Our Values</h3>
+                    <p>
+                       Every meal is prepared with fresh ingredients, bold flavors, and a commitment to delivering quality, happiness, and exceptional service.
+                    </p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Quality without compromise</li>
+                        <li><i class="fas fa-check-circle"></i> Respect for every customer</li>
+                        <li><i class="fas fa-check-circle"></i> Innovation &amp; creativity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- ========================================================= -->
+    <!-- SECTION 5: MILESTONES / TIMELINE (70-80 lines)            -->
+    <!-- ========================================================= -->
+    <section class="milestone-section" id="milestones">
+        <div class="milestone-container">
+            <h2 class="section-title">Our <span style="color:var(--brand-primary);">Journey</span></h2>
+            <p class="section-sub">Key milestones that have shaped Bitez into what it is today.</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-store timeline-icon"></i> First Kitchen Opens</h3>
+                        <p>Bitez was born in a small kitchen with a big dream — to serve the best pizza and fast food in town. We started with just 5 menu items and a handful of loyal customers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-rocket timeline-icon"></i> Online Delivery Launch</h3>
+                        <p>We launched our own delivery platform, making it easier than ever to enjoy Bitez from home. Our customer base grew rapidly as we expanded our menu and delivery radius.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-award timeline-icon"></i> 50K Happy Customers</h3>
+                        <p>Reached the milestone of 50,000 satisfied customers. We introduced new categories like burgers, pasta, and desserts — becoming a go-to for fast food lovers everywhere.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-store-alt timeline-icon"></i> 3 New Locations</h3>
+                        <p>Expanded to 3 new cities with state-of-the-art kitchens. Our commitment to quality and innovation continues to drive us forward every single day.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-content">
+                        <h3><i class="fas fa-star timeline-icon"></i> The Future Is Bright</h3>
+                        <p>Today, Bitez is a trusted name with over 120 menu items, a growing family of food lovers, and a vision to keep pushing the boundaries of great taste.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- ========================================================= -->
+    <!-- SECTION 4: OUR TEAM (70-80 lines)                         -->
+    <!-- ========================================================= -->
+    <section class="team-section" id="team">
+        <div class="team-container">
+            <h2 class="section-title">Meet Our <span style="color:var(--brand-primary);">Team</span></h2>
+            <p class="section-sub">The talented people behind every delicious bite you love.</p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="image/team (1).jpg" alt="Chef Alex" class="team-img">
+                    <div class="team-info">
+                        <h3>Alex Rivera</h3>
+                        <span class="team-role">Head Chef</span>
+                        <p>15 years of culinary excellence. Alex crafts every recipe with passion and precision.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="image/team (2).jpg" alt="Manager Jamie" class="team-img">
+                    <div class="team-info">
+                        <h3>Jamie Chen</h3>
+                        <span class="team-role">Operations Manager</span>
+                        <p>Ensuring every order is perfect — from kitchen to doorstep with speed and care.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="image/teamwomen.jpg" alt="Chef Maria" class="team-img">
+                    <div class="team-info">
+                        <h3>Maria Santos</h3>
+                        <span class="team-role">Pastry Chef</span>
+                        <p>Specialist in desserts and artisan breads. Maria adds sweetness to every meal.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="image/team (4).jpg" alt="David Park" class="team-img">
+                    <div class="team-info">
+                        <h3>David Park</h3>
+                        <span class="team-role">Delivery Lead</span>
+                        <p>Making sure your food arrives hot, fresh, and with a smile every single time.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- FOOTER – EXACT FROM REFERENCE                             -->
+    <!-- ========================================================= -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" class="logo"><i class="fas fa-pizza-slice"></i> Bitez</a>
+                <p style="font-size: 0.9rem; line-height: 1.6;">From oven-fresh pizzas to delicious fast food favorites, we prepare every meal with quality ingredients, bold flavors, and exceptional care.</p>
+               
+            </div>
+            <div>
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">menu</a></li>
+                    <li><a href="#">offers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Support</h4>
+                <ul class="footer-list">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Contact</h4>
+                <ul class="footer-list">
+                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                    <li><i class="fas fa-envelope"></i> hello@eventcater.com</li>
+                </ul>
+                <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+                 
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px; font-size: 0.8rem; border-top: 1px solid #2d3e50; padding-top: 20px;">
+            © 2026 EventCater. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- ========================================================= -->
+    <!-- SCRIPTS                                                   -->
+    <!-- ========================================================= -->
+    <script>
+        // Toggle Theme
+        const toggleTheme = () => {
+            document.body.classList.toggle('dark');
+        };
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+        document.getElementById('mobileThemeToggle').addEventListener('click', toggleTheme);
+
+        // Toggle RTL
+        const toggleRTL = () => {
+            document.documentElement.dir = document.documentElement.dir === 'rtl' ? 'ltr' : 'rtl';
+        };
+        document.getElementById('rtlToggle').addEventListener('click', toggleRTL);
+        document.getElementById('mobileRtlToggle').addEventListener('click', toggleRTL);
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const closeBtn = document.getElementById('closeDrawer');
+        const drawer = document.getElementById('mobileDrawer');
+        const overlay = document.getElementById('navOverlay');
+
+        menuBtn.addEventListener('click', () => {
+            drawer.classList.add('open');
+            overlay.classList.add('open');
+        });
+
+        const closeMenu = () => {
+            drawer.classList.remove('open');
+            overlay.classList.remove('open');
+        };
+
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+    </script>
+
+</body>
+
+</html>
