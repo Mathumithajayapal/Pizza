@@ -9,6 +9,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 
     <style>
         /* ===== ROOT VARIABLES ===== */
@@ -249,7 +251,7 @@
         /* ===== SECTION 1: HERO (80 lines) ===== */
         .hero {
             height: 100vh;
-            background: url("image/pizza (3).jpg") center/cover;
+            background: url("image/pizza (5).jpg") center/cover;
             position: relative;
             display: flex;
             align-items: center;
@@ -681,6 +683,360 @@
     padding: 10px 14px;
     border-radius: 8px;
 }
+/* ================================
+   SPECIAL OFFERS BANNER
+================================ */
+
+.offers-banner {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
+    max-width: 1200px;
+    margin: 70px auto;
+    padding: 55px 65px;
+
+    background: linear-gradient(
+        135deg,
+        var(--brand-primary),
+        #c62828
+    );
+
+    border-radius: 28px;
+    box-shadow: 0 20px 45px rgba(229, 57, 53, 0.25);
+    color: #fff;
+}
+
+.dark .offers-banner {
+    background: var(--dark-bg);
+}
+
+/* Content */
+
+.offers-content {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    max-width: 650px;
+}
+
+.offers-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 16px;
+    margin-bottom: 18px;
+
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.offers-content h2 {
+    margin: 0 0 15px;
+
+    font-size: 38px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.offers-content p {
+    margin: 0 0 22px;
+
+    max-width: 580px;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Coupon Code */
+
+.offer-code {
+    display: inline-block;
+
+    padding: 10px 18px;
+    margin-bottom: 25px;
+
+    background: #fff;
+    color: var(--brand-primary);
+
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.offer-code strong {
+    margin-left: 5px;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+/* Button */
+
+.offers-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 25px;
+
+    background: var(--brand-secondary);
+    color: #1f2937;
+
+    border-radius: 12px;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+.offers-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.offers-btn i {
+    transition: transform 0.3s ease;
+}
+
+.offers-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Image */
+
+.offers-image {
+    position: relative;
+    z-index: 2;
+
+    width: 360px;
+    height: 260px;
+
+    flex-shrink: 0;
+}
+
+.offers-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 22px;
+
+    border: 5px solid rgba(255, 255, 255, 0.2);
+
+    transform: rotate(2deg);
+
+    transition: transform 0.4s ease;
+}
+
+.offers-banner:hover .offers-image img {
+    transform: rotate(0deg) scale(1.03);
+}
+
+/* Decorative Circles */
+
+.offers-decoration {
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.offers-circle {
+    right: 280px;
+    top: -80px;
+}
+
+.offers-circle-two {
+    right: -70px;
+    bottom: -90px;
+
+    width: 230px;
+    height: 230px;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+
+    .offers-banner {
+        margin: 50px 25px;
+        padding: 45px 35px;
+        gap: 25px;
+    }
+
+    .offers-content h2 {
+        font-size: 30px;
+    }
+
+    .offers-image {
+        width: 280px;
+        height: 220px;
+    }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+
+    .offers-banner {
+        flex-direction: column;
+        align-items: stretch;
+
+        margin: 40px 16px;
+        padding: 35px 25px;
+
+        border-radius: 22px;
+    }
+
+    .offers-content {
+        max-width: 100%;
+    }
+
+    .offers-content h2 {
+        font-size: 27px;
+    }
+
+    .offers-content p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .offers-image {
+        width: 100%;
+        height: 220px;
+    }
+
+    .offers-image img {
+        transform: rotate(0);
+    }
+
+    .offers-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 400px) {
+
+    .offers-banner {
+        padding: 28px 20px;
+    }
+
+    .offers-content h2 {
+        font-size: 24px;
+    }
+
+    .offers-image {
+        height: 190px;
+    }
+
+    .offer-code {
+        font-size: 13px;
+    }
+}
+     /* ===== BUTTONS ===== */
+        .btn-primary {
+            padding: 12px 28px;
+            background: var(--brand-primary);
+            color: #fff;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            border: 2px solid var(--brand-primary);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+        .btn-ghost {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            border: none;
+            cursor: pointer;
+        }
+        .dark .btn-ghost {
+            background: #1e293b;
+            color: white;
+        }
+        .hero-outline-btn {
+            padding: 12px 28px;
+            border: 2px solid #fff;
+            border-radius: 40px;
+            color: #fff;
+            font-weight: 600;
+            transition: .3s;
+            display: inline-block;
+        }
+        .hero-outline-btn:hover {
+            background: #fff;
+            color: #E53935;
+        }
+        .offer-btn {
+            padding: 10px 24px;
+            background: var(--brand-secondary);
+            color: #111;
+            border-radius: 30px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .offer-btn:hover {
+            background: #e6a800;
+            transform: scale(1.03);
+        }
+        .offer-outline-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--brand-primary);
+            color: var(--brand-primary);
+            border-radius: 30px;
+            font-weight: 600;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .offer-outline-btn:hover {
+            background: var(--brand-primary);
+            color: #fff;
+        }
         
     </style>
 </head>
@@ -746,7 +1102,7 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="hero-tag">🍕 Fresh • Hot • Delicious</span>
+            <span class="hero-tag"> Fresh • Hot • Delicious</span>
             <h1>Every Bite <span>Made Fresh</span><br>Every Slice Worth Sharing</h1>
             <p>
                 Discover handcrafted pizzas, juicy burgers, crispy fries, and
@@ -801,6 +1157,37 @@
             </div>
         </div>
     </section>
+
+    <!-- Special Offers Banner -->
+<section class="offers-banner">
+    <div class="offers-content">
+        <span class="offers-badge">
+            <i class="fas fa-fire"></i> Limited Time Offer
+        </span>
+
+        <h2>🔥 Get 20% OFF Your Favorite Bites!</h2>
+
+        <p>
+            Craving something delicious? Order your favorite pizza,
+            burger, or fries today and enjoy an amazing discount.
+        </p>
+
+        <div class="offer-code">
+            Use Code: <strong>BITE20</strong>
+        </div>
+
+        <a href="menu.html" class="offers-btn">
+            Order Now <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <div class="offers-image">
+        <img src="image\variets (18).jpg" alt="Special Pizza Offer">
+    </div>
+
+    <div class="offers-decoration offers-circle"></div>
+    <div class="offers-decoration offers-circle-two"></div>
+</section>
 
     <!-- ========================================================= -->
     <!-- SECTION 3: FEATURED MENU (80 lines)                       -->
@@ -937,13 +1324,14 @@
                     <li><a href="#">offers</a></li>
                 </ul>
             </div>
-            <div>
-                <h4 class="footer-title">Support</h4>
+                        <div>
+                <h4 class="footer-title">Store Location</h4>
                 <ul class="footer-list">
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li>Chennai,TamilNadu</li>
+                    <h4>Address</h4>
+                    <p>123, Anna Salai, Chennai, Tamil Nadu - 600002</p>                    
                 </ul>
+              
             </div>
             <div>
                 <h4 class="footer-title">Contact</h4>
@@ -954,7 +1342,7 @@
                 <div class="footer-social">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
         <a href="#"><i class="fab fa-youtube"></i></a>
     </div>
             </div>

@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitez | Pizza & Fast Food Delivery – Menu</title>
-         <link rel="icon" type="image/jpeg" href="image/pizza.jpg">  
+    <link rel="icon" type="image/jpeg" href="image/pizza.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 
     <style>
         /* ===== ROOT VARIABLES ===== */
@@ -54,7 +56,7 @@
             color: inherit;
         }
 
-        /* ===== HEADER / NAVBAR (EXACT FROM REFERENCE) ===== */
+        /* ===== HEADER / NAVBAR ===== */
         .header-nav {
             position: fixed;
             top: 0;
@@ -79,11 +81,6 @@
             align-items: center;
             justify-content: space-between;
             min-height: 70px;
-        }
-
-        .nav-section {
-            display: flex;
-            align-items: center;
         }
 
         .desktop-menu {
@@ -276,7 +273,132 @@
             background: #334155;
         }
 
-        /* ===== MENU PAGE – CARD SECTION ===== */
+        /* ===== ACTIVE NAV LINK ===== */
+        .desktop-menu a {
+            position: relative;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        .desktop-menu a:hover {
+            color: var(--brand-primary);
+        }
+
+        .desktop-menu a.active {
+            color: var(--brand-primary);
+            font-weight: 700;
+        }
+
+        .desktop-menu a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 100%;
+            height: 3px;
+            background: var(--brand-primary);
+            border-radius: 10px;
+        }
+
+        .mobile-nav-drawer a.active {
+            color: var(--brand-primary);
+            font-weight: 700;
+            background: rgba(229, 57, 53, 0.1);
+            padding: 10px 14px;
+            border-radius: 8px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            height: 100vh;
+            background: url("image/pizza (1).jpg") center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .65);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            color: #fff;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: #FFC107;
+            color: #111;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #FFC107;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .hero-stats h2 {
+            font-size: 2rem;
+            color: #FFC107;
+        }
+
+        .hero-stats span {
+            font-size: .95rem;
+        }
+
+        @media(max-width:768px) {
+            .hero {
+                height: auto;
+                padding: 170px 20px 90px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== MENU SECTION ===== */
         .menu-section {
             padding: 140px 20px 80px;
             flex: 1;
@@ -348,72 +470,69 @@
             color: #fff;
         }
 
-        .dark .category-tab.active {
-            background: var(--brand-primary);
-            color: #fff;
+        /* ===== FOOD CARDS GRID ===== */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            align-items: stretch;
         }
 
-        /* ===== FOOD CARDS GRID ===== */
-       /* ===== EQUAL HEIGHT MENU CARDS ===== */
-.food-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    align-items: stretch;
-}
+        .food-card {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f3f4f6;
+            transition: 0.35s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            cursor: pointer;
+        }
 
-.food-card {
-    background: #fff;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
-    border: 1px solid #f3f4f6;
-    transition: 0.35s;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
+        .dark .food-card {
+            background: var(--dark-card);
+            border-color: #1e293b;
+        }
 
-.dark .food-card {
-    background: var(--dark-card);
-    border-color: #1e293b;
-}
+        .food-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+        }
 
-.food-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    flex-shrink: 0;
-}
+        .food-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
 
-.food-card .card-body {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 22px 24px;
-}
+        .food-card .card-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 22px 24px;
+        }
 
-.food-card .card-body h3 {
-    margin-bottom: 10px;
-}
+        .food-card .card-body h3 {
+            margin-bottom: 10px;
+        }
 
-.food-card .card-body .desc {
-    flex: 1;              /* fills remaining space */
-    margin-bottom: 18px;
-    line-height: 1.6;
-}
+        .food-card .card-body .desc {
+            flex: 1;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
 
-.food-card .card-body .price {
-    margin-top: auto;     /* always stays at bottom */
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--brand-primary);
-}
+        .food-card .card-body .price {
+            margin-top: auto;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+        }
 
-.food-card .badge {
-    margin-top: 10px;
-}
-        /* ===== PIZZA VARIETY MODAL / OVERLAY ===== */
+        /* ===== PIZZA VARIETY MODAL ===== */
         .pizza-modal-overlay {
             display: none;
             position: fixed;
@@ -477,7 +596,6 @@
         .pizza-modal-content h2 {
             font-size: 2.2rem;
             margin-bottom: 4px;
-            color: var(--text);
         }
 
         .dark .pizza-modal-content h2 {
@@ -585,7 +703,256 @@
             }
         }
 
-        /* ===== FOOTER (EXACT FROM REFERENCE) ===== */
+        .pizza-modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .pizza-modal-content::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+        .dark .pizza-modal-content::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .pizza-modal-content::-webkit-scrollbar-thumb {
+            background: var(--brand-primary);
+            border-radius: 10px;
+        }
+
+        /* ===== CHEF SPECIAL SECTION ===== */
+        .chef-special-section {
+            padding: 100px 20px;
+            background: #ffffff;
+        }
+
+        .dark .chef-special-section {
+            background: var(--dark-bg);
+        }
+
+        .chef-special-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 45px;
+            align-items: start;
+        }
+
+        .chef-main-story {
+            min-width: 0;
+        }
+
+        .chef-main-image {
+            width: 100%;
+            height: 560px;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .chef-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .chef-main-story:hover .chef-main-image img {
+            transform: scale(1.03);
+        }
+
+        .chef-main-content {
+            padding-top: 20px;
+        }
+
+        .chef-category {
+            display: inline-block;
+            color: var(--brand-primary);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .chef-main-content h2 {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 2.35rem;
+            line-height: 1.12;
+            margin: 0;
+            color: #111;
+        }
+
+        .dark .chef-main-content h2 {
+            color: #fff;
+        }
+
+        .chef-main-content h2 span {
+            color: var(--brand-primary);
+        }
+
+        .chef-author {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .dark .chef-author {
+            color: #a0aebb;
+        }
+
+        .chef-side-content {
+            min-width: 0;
+        }
+
+        .chef-feature-story {
+            border: 5px solid var(--brand-primary);
+            padding: 45px 42px;
+            min-height: 355px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .dark .chef-feature-story {
+            background: var(--dark-card);
+        }
+
+        .chef-feature-story h2 {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 2.35rem;
+            line-height: 1.12;
+            margin: 0 0 18px;
+            color: #111;
+        }
+
+        .dark .chef-feature-story h2 {
+            color: #fff;
+        }
+
+        .chef-feature-story p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .dark .chef-feature-story p {
+            color: #a0aebb;
+        }
+
+        .chef-small-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 45px;
+        }
+
+        .chef-small-story {
+            min-width: 0;
+        }
+
+        .chef-small-image {
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .chef-small-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .chef-small-story:hover .chef-small-image img {
+            transform: scale(1.05);
+        }
+
+        .chef-small-content {
+            padding-top: 14px;
+        }
+
+        .chef-small-category {
+            display: block;
+            color: var(--brand-primary);
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 7px;
+        }
+
+        .chef-small-content h3 {
+            font-family: 'Playfair Display', sans-serif;
+            font-size: 1.25rem;
+            line-height: 1.25;
+            margin-bottom: 12px;
+            color: #111;
+        }
+
+        .dark .chef-small-content h3 {
+            color: #fff;
+        }
+
+        .chef-small-content p {
+            color: #666;
+            font-size: 0.78rem;
+        }
+
+        .dark .chef-small-content p {
+            color: #a0aebb;
+        }
+
+        @media (max-width: 1000px) {
+            .chef-special-container {
+                grid-template-columns: 1fr;
+                max-width: 850px;
+            }
+            .chef-main-image {
+                height: 500px;
+            }
+            .chef-feature-story {
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .chef-special-section {
+                padding: 70px 16px;
+            }
+            .chef-special-container {
+                gap: 35px;
+            }
+            .chef-main-image {
+                height: 380px;
+            }
+            .chef-main-content h2 {
+                font-size: 1.8rem;
+            }
+            .chef-feature-story {
+                border-width: 4px;
+                padding: 30px 25px;
+                min-height: auto;
+            }
+            .chef-feature-story h2 {
+                font-size: 1.75rem;
+            }
+            .chef-small-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-top: 35px;
+            }
+            .chef-small-image {
+                height: 230px;
+            }
+            .chef-small-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ===== FOOTER ===== */
         footer {
             background: var(--footer-bg);
             color: #a0aebb;
@@ -643,7 +1010,38 @@
             line-height: 1.6;
         }
 
-        /* ===== RESPONSIVE ===== */
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .footer-social a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #374151;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+
+        .footer-social a:hover {
+            background: var(--brand-primary);
+            transform: translateY(-4px);
+        }
+
+        .footer-copy {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            border-top: 1px solid #2d3e50;
+            padding-top: 20px;
+        }
+
         @media (max-width: 768px) {
             .menu-header h1 {
                 font-size: 2.2rem;
@@ -697,165 +1095,84 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
-
-        /* scrollbar styling */
-        .pizza-modal-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        .pizza-modal-content::-webkit-scrollbar-track {
-            background: #f0f0f0;
-            border-radius: 10px;
-        }
-        .dark .pizza-modal-content::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-        .pizza-modal-content::-webkit-scrollbar-thumb {
+             /* ===== BUTTONS ===== */
+        .btn-primary {
+            padding: 12px 28px;
             background: var(--brand-primary);
-            border-radius: 10px;
-        }
-        
-        /* ===== SECTION 1: HERO (80 lines) ===== */
-        .hero {
-            height: 100vh;
-            background: url("image/pizza (1).jpg") center/cover;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px;
-        }
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, .65);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
             color: #fff;
-        }
-        .hero-tag {
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.9rem;
             display: inline-block;
-            background: #FFC107;
+            border: 2px solid var(--brand-primary);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+        .btn-ghost {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            border: none;
+            cursor: pointer;
+        }
+        .dark .btn-ghost {
+            background: #1e293b;
+            color: white;
+        }
+        .hero-outline-btn {
+            padding: 12px 28px;
+            border: 2px solid #fff;
+            border-radius: 40px;
+            color: #fff;
+            font-weight: 600;
+            transition: .3s;
+            display: inline-block;
+        }
+        .hero-outline-btn:hover {
+            background: #fff;
+            color: #E53935;
+        }
+        .offer-btn {
+            padding: 10px 24px;
+            background: var(--brand-secondary);
             color: #111;
-            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .offer-btn:hover {
+            background: #e6a800;
+            transform: scale(1.03);
+        }
+        .offer-outline-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--brand-primary);
+            color: var(--brand-primary);
             border-radius: 30px;
             font-weight: 600;
-            margin-bottom: 25px;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
         }
-        .hero h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 25px;
+        .offer-outline-btn:hover {
+            background: var(--brand-primary);
+            color: #fff;
         }
-        .hero h1 span {
-            color: #FFC107;
-        }
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: auto;
-            line-height: 1.8;
-            margin-bottom: 35px;
-        }
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-        }
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .hero-stats h2 {
-            font-size: 2rem;
-            color: #FFC107;
-        }
-        .hero-stats span {
-            font-size: .95rem;
-        }
-        @media(max-width:768px) {
-            .hero {
-                height: auto;
-                padding: 170px 20px 90px;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero-stats {
-                grid-template-columns: 1fr;
-            }
-        }
-        /* ===== ACTIVE NAV LINK ===== */
-.desktop-menu a {
-    position: relative;
-    color: inherit;
-    transition: 0.3s;
-}
-
-.desktop-menu a:hover {
-    color: var(--brand-primary);
-}
-
-.desktop-menu a.active {
-    color: var(--brand-primary);
-    font-weight: 700;
-}
-
-.desktop-menu a.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 100%;
-    height: 3px;
-    background: var(--brand-primary);
-    border-radius: 10px;
-}
-.mobile-nav-drawer a.active {
-    color: var(--brand-primary);
-    font-weight: 700;
-    background: rgba(229, 57, 53, 0.1);
-    padding: 10px 14px;
-    border-radius: 8px;
-}
- .footer-social {
-    display: flex;
-    gap: 12px;
-    margin-top: 18px;
-}
-
-.footer-social a {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: #374151;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-    font-size: 1rem;
-}
-
-.footer-social a:hover {
-    background: var(--brand-primary);
-    transform: translateY(-4px);
-} 
-        
     </style>
 </head>
 
 <body>
 
     <!-- ========================================================= -->
-    <!-- HEADER / NAVBAR – EXACT FROM REFERENCE                     -->
+    <!-- HEADER / NAVBAR                                            -->
     <!-- ========================================================= -->
     <header class="header-nav">
         <nav class="nav-container">
@@ -874,8 +1191,7 @@
                 <a href="services.html">Services</a>
                 <a href="offers.html">Offers</a>
                 <a href="faq.html">FAQ</a>
-  <a href="contact.html">Contact</a>
-
+                <a href="contact.html">Contact</a>
             </div>
 
             <div class="nav-controls">
@@ -892,13 +1208,12 @@
     <div class="mobile-nav-overlay" id="navOverlay"></div>
     <div class="mobile-nav-drawer" id="mobileDrawer">
         <button id="closeDrawer" style="background:none; border:none; font-size:1.5rem; align-self:flex-end; color:inherit;">✕</button>
-        <a href="index.html" style="font-weight:600;">Home1</a>
-        <a href="home2.html" style="font-weight:600;">Home2</a>
+        <a href="index.html">Home 1</a>
+        <a href="home2.html">Home 2</a>
         <a href="about.html">About</a>
         <a href="menu.html" class="active">Menu</a>
         <a href="services.html">Services</a>
         <a href="offers.html">Offers</a>
-
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
         <div style="margin-top: auto; border-top: 1px solid #e5e7eb; padding-top: 20px; display: flex; flex-direction: column; gap: 15px;">
@@ -907,10 +1222,14 @@
             <a href="signin.html" class="btn-primary" style="text-align: center;">LOG IN</a>
         </div>
     </div>
+
+    <!-- ========================================================= -->
+    <!-- HERO SECTION                                              -->
+    <!-- ========================================================= -->
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="hero-tag">🍕 Fresh • Hot • Delicious</span>
+            <span class="hero-tag"> Fresh • Hot • Delicious</span>
             <h1>Every Bite <span>Made Fresh</span><br>Every Slice Worth Sharing</h1>
             <p>
                 Discover handcrafted pizzas, juicy burgers, crispy fries, and
@@ -919,7 +1238,7 @@
             </p>
             <div class="hero-buttons">
                 <a href="menu.html" class="btn-primary">Explore Menu</a>
-                <a href="offers.html" class="hero-outline-btn">Today's Offers</a>
+                <a href="offers.html" class="btn-primary" style="background:transparent; border:2px solid #fff;">Today's Offers</a>
             </div>
             <div class="hero-stats">
                 <div>
@@ -939,18 +1258,16 @@
     </section>
 
     <!-- ========================================================= -->
-    <!-- MENU SECTION – CARD GRID ONLY                              -->
+    <!-- MENU SECTION – CARD GRID                                  -->
     <!-- ========================================================= -->
     <section class="menu-section">
         <div class="menu-container">
 
-            <!-- Header -->
             <div class="menu-header">
                 <h1>Our <span>Menu</span></h1>
                 <p>Tap any card to explore — <strong>click the pizza</strong> to see all varieties!</p>
             </div>
 
-            <!-- Category Tabs (visual only, all items shown) -->
             <div class="category-tabs">
                 <button class="category-tab active" data-filter="all">All</button>
                 <button class="category-tab" data-filter="pizza">🍕 Pizza</button>
@@ -959,11 +1276,10 @@
                 <button class="category-tab" data-filter="drinks">🥤 Drinks</button>
             </div>
 
-            <!-- Food Cards Grid -->
             <div class="food-grid" id="foodGrid">
 
-                <!-- PIZZA CARD – click to open variety modal -->
-                <div class="food-card" data-category="pizza" id="pizzaTriggerCard">
+                <!-- PIZZA CARDS (trigger modal) -->
+                <div class="food-card pizza-trigger" data-category="pizza">
                     <img src="image/dishes (11).jpg" alt="Pizza">
                     <div class="card-body">
                         <h3>🍕 Italian Pizza</h3>
@@ -972,7 +1288,16 @@
                     </div>
                 </div>
 
-                <!-- Other cards (non-pizza) -->
+                <div class="food-card pizza-trigger" data-category="pizza">
+                    <img src="image/pizza (6).jpg" alt="Pizza">
+                    <div class="card-body">
+                        <h3>🍕 Pepperoni Pizza</h3>
+                        <p class="desc">Classic cheesy pizza with fresh basil &amp; rich tomato sauce.</p>
+                        <span class="price">$14.99</span>
+                    </div>
+                </div>
+
+                <!-- OTHER CARDS -->
                 <div class="food-card" data-category="burger">
                     <img src="image/dishes (3).jpg" alt="Burger">
                     <div class="card-body">
@@ -1062,22 +1387,13 @@
                         <span class="price">$4.49</span>
                     </div>
                 </div>
-                  <div class="food-card" data-category="pizza" id="pizzaTriggerCard">
-                    <img src="image/pizza (6).jpg" alt="Pizza">
-                    <div class="card-body">
-                        <h3>🍕 Pepperoni Pizza</h3>
-                        <p class="desc">Classic cheesy pizza with fresh basil &amp; rich tomato sauce.</p>
-                        <span class="price">$14.99</span>
-                    </div>
-                </div>
-
 
             </div>
         </div>
     </section>
 
     <!-- ========================================================= -->
-    <!-- PIZZA VARIETY MODAL / OVERLAY                              -->
+    <!-- PIZZA VARIETY MODAL                                        -->
     <!-- ========================================================= -->
     <div class="pizza-modal-overlay" id="pizzaModal">
         <div class="pizza-modal-content">
@@ -1091,46 +1407,112 @@
     </div>
 
     <!-- ========================================================= -->
-    <!-- FOOTER – EXACT FROM REFERENCE                             -->
+    <!-- CHEF SPECIAL SECTION                                      -->
+    <!-- ========================================================= -->
+    <section class="chef-special-section">
+        <div class="chef-special-container">
+
+            <article class="chef-main-story">
+                <div class="chef-main-image">
+                    <img src="image/chef1 (1).jpg" alt="Bitez Chef Special">
+                </div>
+                <div class="chef-main-content">
+                    <span class="chef-category">CHEF SPECIAL</span>
+                    <h2>
+                        Meet the Chefs Behind
+                        <span>Bitez's Most Delicious</span>
+                        Creations
+                    </h2>
+                    <p class="chef-author">By Bitez Culinary Team</p>
+                </div>
+            </article>
+
+            <div class="chef-side-content">
+                <article class="chef-feature-story">
+                    <span class="chef-category">FROM OUR KITCHEN</span>
+                    <h2>
+                        10 Delicious Dishes
+                        Made by Our Bitez Chefs
+                        That You Can Enjoy
+                        Every Day
+                    </h2>
+                    <p>
+                        Discover the passion, creativity, and fresh ingredients
+                        that make every Bitez dish special.
+                    </p>
+                    <span class="chef-author">By Bitez Chefs</span>
+                </article>
+
+                <div class="chef-small-grid">
+                    <article class="chef-small-story">
+                        <div class="chef-small-image">
+                            <img src="image/dishes (11).jpg" alt="Signature Pizza">
+                        </div>
+                        <div class="chef-small-content">
+                            <span class="chef-small-category">SIGNATURE DISH</span>
+                            <h3>The Secret Behind Our Perfect Italian Pizza</h3>
+                            <p>By Bitez Pizza Chef</p>
+                        </div>
+                    </article>
+
+                    <article class="chef-small-story">
+                        <div class="chef-small-image">
+                            <img src="image/dishes (3).jpg" alt="Signature Burger">
+                        </div>
+                        <div class="chef-small-content">
+                            <span class="chef-small-category">CHEF'S PICK</span>
+                            <h3>Our Most Loved Burger Creation</h3>
+                            <p>By Bitez Kitchen Team</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- FOOTER                                                    -->
     <!-- ========================================================= -->
     <footer>
         <div class="footer-grid">
             <div>
                 <a href="index.html" class="logo"><i class="fas fa-pizza-slice"></i> Bitez</a>
-                <p style="font-size: 0.9rem; line-height: 1.6;">From oven-fresh pizzas to delicious fast food favorites, we prepare every meal with quality ingredients, bold flavors, and exceptional care.</p>
+                <p>From oven-fresh pizzas to delicious fast food favorites, we prepare every meal with quality ingredients, bold flavors, and exceptional care.</p>
             </div>
             <div>
                 <h4 class="footer-title">Quick Links</h4>
                 <ul class="footer-list">
                     <li><a href="#">Our Story</a></li>
-                    <li><a href="#">menu</a></li>
-                    <li><a href="#">offers</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">Offers</a></li>
                 </ul>
             </div>
-            <div>
-                <h4 class="footer-title">Support</h4>
+                        <div>
+                <h4 class="footer-title">Store Location</h4>
                 <ul class="footer-list">
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li>Chennai,TamilNadu</li>
+                    <h4>Address</h4>
+                    <p>123, Anna Salai, Chennai, Tamil Nadu - 600002</p>                    
                 </ul>
+              
             </div>
             <div>
                 <h4 class="footer-title">Contact</h4>
                 <ul class="footer-list">
                     <li><i class="fas fa-phone"></i> +1 234 567 890</li>
-                    <li><i class="fas fa-envelope"></i> hello@eventcater.com</li>
+                    <li><i class="fas fa-envelope"></i> hello@bitez.com</li>
                 </ul>
                 <div class="footer-social">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-    </div>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 40px; font-size: 0.8rem; border-top: 1px solid #2d3e50; padding-top: 20px;">
-            © 2026 EventCater. All rights reserved.
+        <div class="footer-copy">
+            &copy; 2026 Bitez. All rights reserved.
         </div>
     </footer>
 
@@ -1189,7 +1571,7 @@
         const modal = document.getElementById('pizzaModal');
         const closeBtn = document.getElementById('closePizzaModal');
         const grid = document.getElementById('pizzaVarietyGrid');
-        const pizzaTrigger = document.getElementById('pizzaTriggerCard');
+        const pizzaTriggers = document.querySelectorAll('.pizza-trigger');
 
         // =============================================================
         // RENDER PIZZA VARIETIES
@@ -1211,7 +1593,6 @@
                 grid.appendChild(item);
             });
 
-            // Order button handlers
             grid.querySelectorAll('.order-btn-sm').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -1235,10 +1616,10 @@
             document.body.style.overflow = '';
         }
 
-        // Trigger on pizza card click
-        pizzaTrigger.addEventListener('click', openModal);
+        pizzaTriggers.forEach(trigger => {
+            trigger.addEventListener('click', openModal);
+        });
 
-        // Close handlers
         closeBtn.addEventListener('click', closeModal);
         modal.addEventListener('click', function(e) {
             if (e.target === this) closeModal();
@@ -1248,7 +1629,7 @@
         });
 
         // =============================================================
-        // CATEGORY TABS (visual filtering – all items shown for simplicity)
+        // CATEGORY TABS
         // =============================================================
         const tabs = document.querySelectorAll('.category-tab');
         const cards = document.querySelectorAll('.food-card');
@@ -1261,7 +1642,7 @@
                 const filter = this.getAttribute('data-filter');
                 cards.forEach(card => {
                     if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'block';
+                        card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
                     }

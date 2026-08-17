@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitez | About Us – Pizza & Fast Food Delivery</title>
-         <link rel="icon" type="image/jpeg" href="image/pizza.jpg">  
+    <link rel="icon" type="image/jpeg" href="image/pizza.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
 
     <style>
         /* ===== ROOT VARIABLES ===== */
@@ -50,7 +52,7 @@
             color: inherit;
         }
 
-        /* ===== HEADER / NAVBAR (EXACT FROM REFERENCE) ===== */
+        /* ===== HEADER / NAVBAR ===== */
         .header-nav {
             position: fixed;
             top: 0;
@@ -246,7 +248,7 @@
             color: #E53935;
         }
 
-        /* ===== SECTION 1: ABOUT HERO (70-80 lines) ===== */
+        /* ===== 1. ABOUT HERO ===== */
         .about-hero {
             height: 100vh;
             background: url("image/pizza (3).jpg") center/cover;
@@ -311,7 +313,7 @@
             }
         }
 
-        /* ===== SECTION 2: OUR STORY (70-80 lines) ===== */
+        /* ===== 2. OUR STORY ===== */
         .story-section {
             padding: 90px 20px;
             background: #fff;
@@ -407,7 +409,7 @@
             }
         }
 
-        /* ===== SECTION 3: MISSION & VISION (70-80 lines) ===== */
+        /* ===== 3. MISSION & VISION ===== */
         .mission-section {
             padding: 90px 20px;
             background: #fff8f3;
@@ -435,7 +437,7 @@
         }
         .mission-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
         }
         .mission-card {
@@ -505,10 +507,387 @@
             }
         }
 
-        /* ===== SECTION 4: OUR TEAM (70-80 lines) ===== */
-        .team-section {
+        /* ===== 4. QUALITY & HYGIENE ===== */
+        .quality-section {
             padding: 90px 20px;
             background: #fff;
+        }
+        .dark .quality-section {
+            background: var(--dark-bg);
+        }
+        .quality-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .quality-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 50px;
+        }
+        .quality-header .section-label {
+            display: inline-block;
+            color: var(--brand-primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .quality-header h2 {
+            font-size: 2.7rem;
+            margin-bottom: 15px;
+        }
+        .quality-header h2 span {
+            color: var(--brand-primary);
+        }
+        .quality-header p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .dark .quality-header p {
+            color: #a0aebb;
+        }
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+        }
+        .quality-card {
+            background: #fff8f3;
+            padding: 40px 35px;
+            border-radius: 24px;
+            border: 1px solid #f1e4dc;
+            transition: all 0.35s ease;
+        }
+        .dark .quality-card {
+            background: var(--dark-card);
+            border-color: #2d3e50;
+        }
+        .quality-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+        }
+        .quality-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(229, 57, 53, 0.1);
+            color: var(--brand-primary);
+            border-radius: 18px;
+            font-size: 2rem;
+            margin-bottom: 22px;
+        }
+        .quality-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 12px;
+        }
+        .quality-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .dark .quality-card p {
+            color: #cbd5e1;
+        }
+        .quality-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .quality-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 0;
+            color: #444;
+            border-bottom: 1px solid #eadfd8;
+        }
+        .dark .quality-list li {
+            color: #cbd5e1;
+            border-bottom-color: #2d3e50;
+        }
+        .quality-list li:last-child {
+            border-bottom: none;
+        }
+        .quality-list i {
+            color: var(--brand-primary);
+        }
+        @media (max-width: 900px) {
+            .quality-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .quality-section {
+                padding: 65px 20px;
+            }
+            .quality-header h2 {
+                font-size: 2.2rem;
+            }
+            .quality-card {
+                padding: 30px 25px;
+            }
+        }
+
+        /* ===== 5. FRESH INGREDIENTS ===== */
+        .ingredients-section {
+            padding: 90px 20px;
+            background: #fff8f3;
+        }
+        .dark .ingredients-section {
+            background: var(--dark-bg);
+        }
+        .ingredients-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .ingredients-image {
+            border-radius: 26px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+        .ingredients-image img {
+            width: 100%;
+            height: 430px;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .ingredients-image:hover img {
+            transform: scale(1.05);
+        }
+        .ingredients-content .section-label {
+            display: inline-block;
+            color: var(--brand-primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .ingredients-content h2 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+        .ingredients-content h2 span {
+            color: var(--brand-primary);
+        }
+        .ingredients-content>p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+        }
+        .dark .ingredients-content>p {
+            color: #cbd5e1;
+        }
+        .ingredients-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .ingredient-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+        .dark .ingredient-item {
+            background: var(--dark-card);
+        }
+        .ingredient-item:hover {
+            transform: translateY(-4px);
+        }
+        .ingredient-item i {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 193, 7, 0.15);
+            color: #d99d00;
+            border-radius: 50%;
+        }
+        .ingredient-item strong {
+            font-size: 0.95rem;
+        }
+        .ingredient-item small {
+            display: block;
+            color: #777;
+            margin-top: 3px;
+            font-size: 0.78rem;
+        }
+        .dark .ingredient-item small {
+            color: #a0aebb;
+        }
+        @media (max-width: 900px) {
+            .ingredients-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .ingredients-image img {
+                height: 350px;
+            }
+        }
+        @media (max-width: 600px) {
+            .ingredients-section {
+                padding: 65px 20px;
+            }
+            .ingredients-content h2 {
+                font-size: 2.2rem;
+            }
+            .ingredients-items {
+                grid-template-columns: 1fr;
+            }
+            .ingredients-image img {
+                height: 280px;
+            }
+        }
+
+        /* ===== 6. MILESTONES / TIMELINE ===== */
+        .milestone-section {
+            padding: 90px 20px;
+            background: #fff;
+        }
+        .dark .milestone-section {
+            background: var(--dark-bg);
+        }
+        .milestone-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .milestone-container .section-title {
+            text-align: center;
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+        }
+        .milestone-container .section-sub {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.05rem;
+        }
+        .dark .milestone-container .section-sub {
+            color: #a0aebb;
+        }
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+            padding-inline-start: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            inset-inline-start: 15px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--brand-secondary);
+            border-radius: 4px;
+        }
+        .timeline-item {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            position: relative;
+        }
+        .timeline-item .timeline-dot {
+            position: absolute;
+            inset-inline-start: -33px;
+            top: 6px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--brand-primary);
+            border: 4px solid var(--brand-secondary);
+            box-shadow: 0 0 0 4px #fff;
+        }
+        .dark .timeline-item .timeline-dot {
+            box-shadow: 0 0 0 4px var(--dark-bg);
+        }
+        .timeline-item .timeline-year {
+            min-width: 90px;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--brand-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.2;
+        }
+        .timeline-item .timeline-content {
+            background: #fff;
+            padding: 22px 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .06);
+            flex: 1;
+        }
+        .dark .timeline-item .timeline-content {
+            background: var(--dark-card);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, .3);
+        }
+        .timeline-item .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+            font-family: 'Inter', sans-serif;
+        }
+        .timeline-item .timeline-content p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+        .dark .timeline-item .timeline-content p {
+            color: #cbd5e1;
+        }
+        .timeline-item .timeline-content .timeline-icon {
+            color: var(--brand-secondary);
+            margin-inline-end: 10px;
+        }
+        @media(max-width:768px) {
+            .timeline {
+                padding-inline-start: 25px;
+            }
+            .timeline::before {
+                inset-inline-start: 8px;
+            }
+            .timeline-item .timeline-dot {
+                inset-inline-start: -26px;
+                width: 16px;
+                height: 16px;
+            }
+            .timeline-item .timeline-year {
+                min-width: 60px;
+                font-size: 1.3rem;
+            }
+            .timeline-item {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .timeline-item .timeline-content {
+                padding: 18px 20px;
+                width: 100%;
+            }
+        }
+
+        /* ===== 7. OUR TEAM ===== */
+        .team-section {
+            padding: 90px 20px;
+            background: #fff8f3;
         }
         .dark .team-section {
             background: var(--dark-bg);
@@ -620,132 +999,38 @@
             }
         }
 
-        /* ===== SECTION 5: MILESTONES / TIMELINE (70-80 lines) ===== */
-        .milestone-section {
-            padding: 90px 20px;
-            background: #fff8f3;
-        }
-        .dark .milestone-section {
-            background: var(--dark-bg);
-        }
-        .milestone-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .milestone-container .section-title {
-            text-align: center;
-            font-size: 2.6rem;
-            margin-bottom: 12px;
-        }
-        .milestone-container .section-sub {
-            text-align: center;
-            color: #666;
-            margin-bottom: 50px;
-            font-size: 1.05rem;
-        }
-        .dark .milestone-container .section-sub {
-            color: #a0aebb;
-        }
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+        /* ===== ACTIVE NAV LINK ===== */
+        .desktop-menu a {
             position: relative;
-            padding-left: 40px;
+            color: inherit;
+            transition: 0.3s;
         }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--brand-secondary);
-            border-radius: 4px;
-        }
-        .timeline-item {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-            position: relative;
-        }
-        .timeline-item .timeline-dot {
-            position: absolute;
-            left: -33px;
-            top: 6px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--brand-primary);
-            border: 4px solid var(--brand-secondary);
-            box-shadow: 0 0 0 4px #fff;
-        }
-        .dark .timeline-item .timeline-dot {
-            box-shadow: 0 0 0 4px var(--dark-bg);
-        }
-        .timeline-item .timeline-year {
-            min-width: 90px;
-            font-weight: 800;
-            font-size: 1.8rem;
+        .desktop-menu a:hover {
             color: var(--brand-primary);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.2;
         }
-        .timeline-item .timeline-content {
-            background: #fff;
-            padding: 22px 30px;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, .06);
-            flex: 1;
+        .desktop-menu a.active {
+            color: var(--brand-primary);
+            font-weight: 700;
         }
-        .dark .timeline-item .timeline-content {
-            background: var(--dark-card);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, .3);
+        .desktop-menu a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 100%;
+            height: 3px;
+            background: var(--brand-primary);
+            border-radius: 10px;
         }
-        .timeline-item .timeline-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 6px;
-            font-family: 'Inter', sans-serif;
-        }
-        .timeline-item .timeline-content p {
-            color: #555;
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-        .dark .timeline-item .timeline-content p {
-            color: #cbd5e1;
-        }
-        .timeline-item .timeline-content .timeline-icon {
-            color: var(--brand-secondary);
-            margin-right: 10px;
-        }
-        @media(max-width:768px) {
-            .timeline {
-                padding-left: 25px;
-            }
-            .timeline::before {
-                left: 8px;
-            }
-            .timeline-item .timeline-dot {
-                left: -26px;
-                width: 16px;
-                height: 16px;
-            }
-            .timeline-item .timeline-year {
-                min-width: 60px;
-                font-size: 1.3rem;
-            }
-            .timeline-item {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-            .timeline-item .timeline-content {
-                padding: 18px 20px;
-                width: 100%;
-            }
+        .mobile-nav-drawer a.active {
+            color: var(--brand-primary);
+            font-weight: 700;
+            background: rgba(229, 57, 53, 0.1);
+            padding: 10px 14px;
+            border-radius: 8px;
         }
 
-        /* ===== FOOTER (EXACT FROM REFERENCE) ===== */
+        /* ===== FOOTER ===== */
         footer {
             background: var(--footer-bg);
             color: #a0aebb;
@@ -793,70 +1078,112 @@
             font-size: 0.9rem;
             line-height: 1.6;
         }
-       .footer-social {
-    display: flex;
-    gap: 12px;
-    margin-top: 18px;
-}
-
-.footer-social a {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: #374151;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-    font-size: 1rem;
-}
-
-.footer-social a:hover {
-    background: var(--brand-primary);
-    transform: translateY(-4px);
-} 
-  /* ===== ACTIVE NAV LINK ===== */
-.desktop-menu a {
-    position: relative;
-    color: inherit;
-    transition: 0.3s;
-}
-
-.desktop-menu a:hover {
-    color: var(--brand-primary);
-}
-
-.desktop-menu a.active {
-    color: var(--brand-primary);
-    font-weight: 700;
-}
-
-.desktop-menu a.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 100%;
-    height: 3px;
-    background: var(--brand-primary);
-    border-radius: 10px;
-}
-.mobile-nav-drawer a.active {
-    color: var(--brand-primary);
-    font-weight: 700;
-    background: rgba(229, 57, 53, 0.1);
-    padding: 10px 14px;
-    border-radius: 8px;
-}
-        
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+        .footer-social a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #374151;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+        .footer-social a:hover {
+            background: var(--brand-primary);
+            transform: translateY(-4px);
+        }
+        .footer-copy {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            border-top: 1px solid #2d3e50;
+            padding-top: 20px;
+        }
+          /* ===== BUTTONS ===== */
+        .btn-primary {
+            padding: 12px 28px;
+            background: var(--brand-primary);
+            color: #fff;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            border: 2px solid var(--brand-primary);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            opacity: 0.85;
+        }
+        .btn-ghost {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            border: none;
+            cursor: pointer;
+        }
+        .dark .btn-ghost {
+            background: #1e293b;
+            color: white;
+        }
+        .hero-outline-btn {
+            padding: 12px 28px;
+            border: 2px solid #fff;
+            border-radius: 40px;
+            color: #fff;
+            font-weight: 600;
+            transition: .3s;
+            display: inline-block;
+        }
+        .hero-outline-btn:hover {
+            background: #fff;
+            color: #E53935;
+        }
+        .offer-btn {
+            padding: 10px 24px;
+            background: var(--brand-secondary);
+            color: #111;
+            border-radius: 30px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .offer-btn:hover {
+            background: #e6a800;
+            transform: scale(1.03);
+        }
+        .offer-outline-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--brand-primary);
+            color: var(--brand-primary);
+            border-radius: 30px;
+            font-weight: 600;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .offer-outline-btn:hover {
+            background: var(--brand-primary);
+            color: #fff;
+        }
     </style>
 </head>
 
 <body>
 
     <!-- ========================================================= -->
-    <!-- HEADER / NAVBAR – EXACT FROM REFERENCE                     -->
+    <!-- HEADER / NAVBAR                                            -->
     <!-- ========================================================= -->
     <header class="header-nav">
         <nav class="nav-container">
@@ -875,11 +1202,10 @@
                 <a href="services.html">Services</a>
                 <a href="offers.html">Offers</a>
                 <a href="faq.html">FAQ</a>
-  <a href="contact.html">Contact</a>
-
+                <a href="contact.html">Contact</a>
             </div>
 
-            <div class="nav-controls">
+          <div class="nav-controls">
                 <button id="themeToggle" class="btn-ghost"><i class="fas fa-moon"></i></button>
                 <button id="rtlToggle" class="btn-ghost" style="font-weight: bold; font-size: 0.7rem;">RTL</button>
                 <a href="signin.html" class="btn-primary">LOG IN</a>
@@ -893,24 +1219,23 @@
     <div class="mobile-nav-overlay" id="navOverlay"></div>
     <div class="mobile-nav-drawer" id="mobileDrawer">
         <button id="closeDrawer" style="background:none; border:none; font-size:1.5rem; align-self:flex-end;">✕</button>
-        <a href="index.html" style="font-weight:600;">Home1</a>
-        <a href="home2.html" style="font-weight:600;">Home2</a>
+        <a href="index.html" style="font-weight:600;">Home 1</a>
+        <a href="home2.html" style="font-weight:600;">Home 2</a>
         <a href="about.html" class="active">About</a>
         <a href="menu.html">Menu</a>
         <a href="services.html">Services</a>
         <a href="offers.html">Offers</a>
-
         <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
         <div style="margin-top: auto; border-top: 1px solid #e5e7eb; padding-top: 20px; display: flex; flex-direction: column; gap: 15px;">
             <button id="mobileThemeToggle" style="padding: 10px; background: #f3f4f6; color: #111827; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Toggle Theme</button>
             <button id="mobileRtlToggle" style="padding: 10px; background: #f3f4f6; color: #111827; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Toggle RTL</button>
-            <a href="login.html" class="btn-primary" style="text-align: center;">LOG IN</a>
+            <a href="signin.html" class="btn-primary" style="text-align: center;">LOG IN</a>
         </div>
     </div>
 
     <!-- ========================================================= -->
-    <!-- SECTION 1: ABOUT HERO (70-80 lines)                       -->
+    <!-- 1. ABOUT HERO                                             -->
     <!-- ========================================================= -->
     <section class="about-hero">
         <div class="about-hero-content">
@@ -929,7 +1254,7 @@
     </section>
 
     <!-- ========================================================= -->
-    <!-- SECTION 2: OUR STORY (70-80 lines)                        -->
+    <!-- 2. OUR STORY                                              -->
     <!-- ========================================================= -->
     <section class="story-section" id="story">
         <div class="story-container">
@@ -937,7 +1262,7 @@
                 <img src="image/pizza (7).jpg" alt="Our Story – Bitez Kitchen">
             </div>
             <div class="story-text">
-                <span class="story-sub"><i class="fas fa-book-open"></i> Our Journey</span>
+                <span class="story-sub"><i class="fas fa-book-open"></i> Our Story</span>
                 <h2>From a Small Kitchen to <span>Your Favorite</span> Delivery</h2>
                 <p>
                     Bitez started in 2018 with a simple idea: bring restaurant-quality pizza
@@ -973,7 +1298,7 @@
     </section>
 
     <!-- ========================================================= -->
-    <!-- SECTION 3: MISSION & VISION (70-80 lines)                 -->
+    <!-- 3. MISSION & VISION                                       -->
     <!-- ========================================================= -->
     <section class="mission-section" id="mission">
         <div class="mission-container">
@@ -1010,7 +1335,8 @@
                     <div class="mission-icon"><i class="fas fa-heart"></i></div>
                     <h3>Our Values</h3>
                     <p>
-                       Every meal is prepared with fresh ingredients, bold flavors, and a commitment to delivering quality, happiness, and exceptional service.
+                        Every meal is prepared with fresh ingredients, bold flavors, and a commitment
+                        to delivering quality, happiness, and exceptional service.
                     </p>
                     <ul>
                         <li><i class="fas fa-check-circle"></i> Quality without compromise</li>
@@ -1022,10 +1348,108 @@
         </div>
     </section>
 
-   
+    <!-- ========================================================= -->
+    <!-- 4. QUALITY & HYGIENE                                      -->
+    <!-- ========================================================= -->
+    <section class="quality-section" id="quality">
+        <div class="quality-container">
+            <div class="quality-header">
+                <span class="section-label"><i class="fas fa-shield-heart"></i> Our Promise</span>
+                <h2>Quality & <span>Hygiene</span></h2>
+                <p>
+                    Your safety and satisfaction come first. We follow strict
+                    hygiene standards and quality checks at every step, from
+                    our kitchen to your doorstep.
+                </p>
+            </div>
+            <div class="quality-grid">
+                <div class="quality-card">
+                    <div class="quality-icon"><i class="fas fa-hand-sparkles"></i></div>
+                    <h3>Clean &amp; Hygienic Kitchen</h3>
+                    <p>
+                        Our kitchens are cleaned and sanitized regularly to
+                        maintain a safe and healthy environment for preparing
+                        every meal.
+                    </p>
+                    <ul class="quality-list">
+                        <li><i class="fas fa-check-circle"></i> Sanitized preparation areas</li>
+                        <li><i class="fas fa-check-circle"></i> Strict food safety practices</li>
+                        <li><i class="fas fa-check-circle"></i> Clean equipment &amp; utensils</li>
+                    </ul>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon"><i class="fas fa-medal"></i></div>
+                    <h3>Quality You Can Trust</h3>
+                    <p>
+                        Every ingredient and recipe goes through careful
+                        quality checks so that every Bitez meal delivers
+                        the taste and freshness you expect.
+                    </p>
+                    <ul class="quality-list">
+                        <li><i class="fas fa-check-circle"></i> Carefully selected ingredients</li>
+                        <li><i class="fas fa-check-circle"></i> Fresh food prepared daily</li>
+                        <li><i class="fas fa-check-circle"></i> Consistent taste &amp; quality</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ========================================================= -->
-    <!-- SECTION 5: MILESTONES / TIMELINE (70-80 lines)            -->
+    <!-- 5. FRESH INGREDIENTS                                      -->
+    <!-- ========================================================= -->
+    <section class="ingredients-section" id="ingredients">
+        <div class="ingredients-container">
+            <div class="ingredients-grid">
+                <div class="ingredients-image">
+                    <img src="image/pizza (7).jpg" alt="Fresh ingredients used at Bitez">
+                </div>
+                <div class="ingredients-content">
+                    <span class="section-label"><i class="fas fa-leaf"></i> Freshness First</span>
+                    <h2>Made With <span>Fresh Ingredients</span></h2>
+                    <p>
+                        Great food starts with great ingredients. At Bitez,
+                        we carefully choose fresh vegetables, premium meats,
+                        quality cheese, and freshly prepared dough to create
+                        food that tastes better in every bite.
+                    </p>
+                    <div class="ingredients-items">
+                        <div class="ingredient-item">
+                            <i class="fas fa-seedling"></i>
+                            <div>
+                                <strong>Fresh Vegetables</strong>
+                                <small>Picked for quality</small>
+                            </div>
+                        </div>
+                        <div class="ingredient-item">
+                            <i class="fas fa-cheese"></i>
+                            <div>
+                                <strong>Premium Cheese</strong>
+                                <small>Rich &amp; delicious</small>
+                            </div>
+                        </div>
+                        <div class="ingredient-item">
+                            <i class="fas fa-drumstick-bite"></i>
+                            <div>
+                                <strong>Quality Meats</strong>
+                                <small>Carefully selected</small>
+                            </div>
+                        </div>
+                        <div class="ingredient-item">
+                            <i class="fas fa-wheat-awn"></i>
+                            <div>
+                                <strong>Fresh Dough</strong>
+                                <small>Prepared every day</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- 6. MILESTONES / TIMELINE                                  -->
     <!-- ========================================================= -->
     <section class="milestone-section" id="milestones">
         <div class="milestone-container">
@@ -1075,8 +1499,9 @@
             </div>
         </div>
     </section>
-     <!-- ========================================================= -->
-    <!-- SECTION 4: OUR TEAM (70-80 lines)                         -->
+
+    <!-- ========================================================= -->
+    <!-- 7. OUR TEAM                                               -->
     <!-- ========================================================= -->
     <section class="team-section" id="team">
         <div class="team-container">
@@ -1084,7 +1509,7 @@
             <p class="section-sub">The talented people behind every delicious bite you love.</p>
             <div class="team-grid">
                 <div class="team-card">
-                    <img src="image/team (1).jpg" alt="Chef Alex" class="team-img">
+                    <img src="image/chef1 (1).jpg" alt="Chef Alex" class="team-img">
                     <div class="team-info">
                         <h3>Alex Rivera</h3>
                         <span class="team-role">Head Chef</span>
@@ -1092,12 +1517,12 @@
                         <div class="team-social">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="team-card">
-                    <img src="image/team (2).jpg" alt="Manager Jamie" class="team-img">
+                    <img src="image/chef1 (2).jpg" alt="Manager Jamie" class="team-img">
                     <div class="team-info">
                         <h3>Jamie Chen</h3>
                         <span class="team-role">Operations Manager</span>
@@ -1105,13 +1530,12 @@
                         <div class="team-social">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                         </div>
-                       
                     </div>
                 </div>
                 <div class="team-card">
-                    <img src="image/teamwomen.jpg" alt="Chef Maria" class="team-img">
+                    <img src="image/chef1 (3).jpg" alt="Chef Maria" class="team-img">
                     <div class="team-info">
                         <h3>Maria Santos</h3>
                         <span class="team-role">Pastry Chef</span>
@@ -1119,12 +1543,12 @@
                         <div class="team-social">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="team-card">
-                    <img src="image/team (4).jpg" alt="David Park" class="team-img">
+                    <img src="image/chef1 (4).jpg" alt="David Park" class="team-img">
                     <div class="team-info">
                         <h3>David Park</h3>
                         <span class="team-role">Delivery Lead</span>
@@ -1132,7 +1556,7 @@
                         <div class="team-social">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1141,48 +1565,50 @@
     </section>
 
     <!-- ========================================================= -->
-    <!-- FOOTER – EXACT FROM REFERENCE                             -->
+    <!-- FOOTER                                                    -->
     <!-- ========================================================= -->
     <footer>
         <div class="footer-grid">
             <div>
                 <a href="index.html" class="logo"><i class="fas fa-pizza-slice"></i> Bitez</a>
-                <p style="font-size: 0.9rem; line-height: 1.6;">From oven-fresh pizzas to delicious fast food favorites, we prepare every meal with quality ingredients, bold flavors, and exceptional care.</p>
-               
+                <p>From oven-fresh pizzas to delicious fast food favorites, we prepare every meal with quality ingredients, bold flavors, and exceptional care.</p>
             </div>
             <div>
                 <h4 class="footer-title">Quick Links</h4>
                 <ul class="footer-list">
                     <li><a href="#">Our Story</a></li>
-                    <li><a href="#">menu</a></li>
-                    <li><a href="#">offers</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">Offers</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="footer-title">Support</h4>
+                <h4 class="footer-title">Store Location</h4>
                 <ul class="footer-list">
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li>Chennai,TamilNadu</li>
+                    <h4>Address</h4>
+                    <p>123, Anna Salai, Chennai, Tamil Nadu - 600002</p>                    
                 </ul>
+              
             </div>
+            
             <div>
                 <h4 class="footer-title">Contact</h4>
                 <ul class="footer-list">
                     <li><i class="fas fa-phone"></i> +1 234 567 890</li>
-                    <li><i class="fas fa-envelope"></i> hello@eventcater.com</li>
+                    <li><i class="fas fa-envelope"></i> hello@bitez.com</li>
+                     <div class="contact-item">       
+    </div>
                 </ul>
                 <div class="footer-social">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-    </div>
-                 
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 40px; font-size: 0.8rem; border-top: 1px solid #2d3e50; padding-top: 20px;">
-            © 2026 EventCater. All rights reserved.
+        <div class="footer-copy">
+            &copy; 2026 Bitez. All rights reserved.
         </div>
     </footer>
 
